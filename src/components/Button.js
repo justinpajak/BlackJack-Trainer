@@ -1,4 +1,6 @@
-export function Button({ onStart, bg, text }) {
+import React from 'react';
+
+const Button = ({ onStart, bg, text }) => {
     return (
         <div>
             {/* Having trouble with the background of the button */}
@@ -8,3 +10,6 @@ export function Button({ onStart, bg, text }) {
         </div>
     )
 }
+
+export default Button;
+
