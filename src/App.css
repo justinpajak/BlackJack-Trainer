@@ -17,13 +17,13 @@ body {
   background-color: black;
   width: 36rem;
   position: absolute;
-  top: 30%;
+  top: 35%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
-#background{
+.background{
   width: 100%;
   min-height: 100vh;
   background:
@@ -36,4 +36,24 @@ body {
 
 .App {
   text-align: center;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.start {
+  background: black;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: inherit;
 }

@@ -11,12 +11,4 @@ export function Header({ title, points }) {
             {/* < Points_Comp points={points} /> */}
         </div>
     )
-//   return html`
-//     <h1 class="heading">
-//       ${title}
-//     </h1>
-//     <img class="cards" src="Images/blackjack.png" />
-//     <${Points_Comp} points=${points} />
-//     <hr />
-//   `;
 }
