@@ -2,13 +2,12 @@
 
 // Component returns header: title, picture, and points
 // Child component: Points_Comp
-export function Header({ title, points }) {
+export function Header({title}) {
     return (
-        <div class="heading_background">
-            <h1 class="heading">
+        <div className="heading_background">
+            <h1 className="heading">
                 {title}
             </h1>
-            {/* < Points_Comp points={points} /> */}
         </div>
     )
 }
