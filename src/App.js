@@ -11,6 +11,7 @@ function App() {
 
   return (
     <div>
+      <div className="background"></div>
       <Button 
         onStart={onStart} 
         bg={runningTrain ? "red" : "black"}

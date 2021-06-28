@@ -3,11 +3,12 @@
 
 body {
   font-family: "Righteous", cursive;
-  background: url("./images/blackjack.jpg");
+  background-image: url("./images/blackjack.jpg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
 }
+
 
 .heading {
   text-align: center;
