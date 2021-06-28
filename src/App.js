@@ -1,5 +1,6 @@
 import { Button } from "./components/Button.js";
 import React, { useState } from 'react';
+import "./App.css";
 
 function App() {
 
