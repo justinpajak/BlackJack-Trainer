@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { Header } from "./components/Header.js";
+// import { getPoints } from "./services/Points.js";
+import { Button } from "./components/Button.js";
+import React, { useEffect, useState } from 'react';
 
 function App() {
+  const [points, setPoints] = useState(0);
+
+  const [runningTrain, setRunningTrain] = useState(false); 
+
+  // useEffect(() => {
+  //   return getPoints().then((data) => setPoints(data));
+  // }, [points]);
+
+  const onStart = () => {
+    setRunningTrain(!runningTrain);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div class="background"></div>
+      <Header title="Blackjack Counting Trainer" points={points} />
+      <Button 
+        onStart={onStart} 
+        bg={runningTrain ? "red" : "black"}
+        text={runningTrain ? "stop" : "start"}
+      />
     </div>
   );
 }
