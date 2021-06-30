@@ -9,6 +9,7 @@ import "../styles/Navbar.css";
 // Import Icons
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import { GiPokerHand} from 'react-icons/gi'
 
 // Import Components
 import { PageInfoData } from '../Data/PageInfoData.js';
@@ -28,6 +29,11 @@ const NavBar = () => {
                     <Link to="#" className="bars-button">
                         <FaIcons.FaBars onClick={showNavbar}/>
                     </Link>
+                    <div className="title">
+                        BlackJack Trainer  
+                        <GiPokerHand/>
+                    </div>
+                    <div></div>
                 </div>
                 <nav className={navbarOpen ? 'navbar-left active' : 'navbar-left'}>
                     <ul className="menu-items" onClick={showNavbar}>
