@@ -1,11 +1,10 @@
 const Parse = require('parse');
 
 const Stats = () => {
-    return ( <
-        div className = "stats" >
-        <
-        h1 > Stats < /h1> <
-        /div>
+    return ( 
+        <div className="stats">
+        <h1>Stats</h1>
+        </div >
     );
 }
 
