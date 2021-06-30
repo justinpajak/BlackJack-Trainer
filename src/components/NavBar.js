@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 
 // Import Styles
-import "../styles/Navbar.css";
+import "../styles/NavBar.css";
 
 // Import Icons
 import * as FaIcons from "react-icons/fa";
