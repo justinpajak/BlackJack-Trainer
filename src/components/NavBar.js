@@ -1,15 +1,15 @@
-// Import Dependecies
+// Import Dependencies
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 
 // Import Styles
-import "../styles/Navbar.css";
+import "../styles/NavBar.css";
 
 // Import Icons
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { GiPokerHand} from 'react-icons/gi'
+import { GiPokerHand } from 'react-icons/gi'
 
 // Import Components
 import { PageInfoData } from '../Data/PageInfoData.js';

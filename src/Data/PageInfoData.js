@@ -1,9 +1,9 @@
 import React from 'react'
 
-import {AiOutlineHome} from "react-icons/ai";
-import { GiPokerHand} from 'react-icons/gi'
-import {ImStatsDots} from 'react-icons/im' 
-import {BiBook, BiTrophy} from "react-icons/bi"
+import { AiOutlineHome } from "react-icons/ai";
+import { GiPokerHand } from 'react-icons/gi'
+import { ImStatsDots } from 'react-icons/im' 
+import { BiBook, BiTrophy } from "react-icons/bi"
 
 export const PageInfoData = [
     {
