@@ -19,16 +19,19 @@ import Tutorial from "./pages/Tutorial";
 // Main Component
 const App = () => {
 
+  // User State
+  const [user, setUser] = useState('user 1');
+
   return (
     <div>
       <Router>
         <NavBar/>
         <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/train" component={Train}/>
-          <Route path="/stats" component={Stats}/>
-          <Route path="/rank" component={Rank}/>
-          <Route path="/tutorial" component={Tutorial}/>
+          <Route path="/" exact component={() => <Home/>}/>
+          <Route path="/train" component={() => <Train user={user}/>}/>
+          <Route path="/stats" component={() => <Stats/>}/>
+          <Route path="/rank" component={() => <Rank/>}/>
+          <Route path="/tutorial" component={() => <Tutorial/>}/>
         </Switch>
       </Router>
     </div>

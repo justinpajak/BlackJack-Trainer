@@ -6,7 +6,7 @@ import Button from "../components/Button";
 // Import CSS
 import "../styles/Train.css"
 
-const Train = () => {
+const Train = ({user}) => {
 
     const [running, setRunning] = useState(false);
 
@@ -17,6 +17,7 @@ const Train = () => {
     return (
         <div className="train">
             <Button onStart={onStart} bg={running ? 'red' : 'black'} text={running ? 'stop' : 'start'}/>
+            <h1>{user}</h1>
         </div>
     );
 }
