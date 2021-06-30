@@ -1,42 +1,47 @@
+// Import Dependecies
 import React, { useState } from 'react';
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 
-import { SidebarData } from '../Data/NavData.js';
-import "../styles/NavBar.css";
+// Import Styles
+import "../styles/Navbar.css";
 
+// Import Icons
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+
+// Import Components
+import { PageInfoData } from '../Data/PageInfoData.js';
 
 const NavBar = () => {
 
-    const [sidebar, setSidebar] = useState(false);
+    const [navbarOpen, setNavbarOpen] = useState(false);
 
-    const showSidebar = () => {
-        setSidebar(!sidebar);
+    const showNavbar = () => {
+        setNavbarOpen(!navbarOpen);
     };
 
     return (
         <div>
             <IconContext.Provider value={{color: '#fff'}}>
-                <div className="navbar">
-                    <Link to="#" className="menu-bars">
-                        <FaIcons.FaBars onClick={showSidebar}/>
+                <div className="navbar-top">
+                    <Link to="#" className="bars-button">
+                        <FaIcons.FaBars onClick={showNavbar}/>
                     </Link>
                 </div>
-                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                    <ul className="nav-menu-items" onClick={showSidebar}>
-                        <li className="navbar-toggle">
-                            <Link to="#" className="menu-bars">
-                                <AiIcons.AiOutlineClose />
+                <nav className={navbarOpen ? 'navbar-left active' : 'navbar-left'}>
+                    <ul className="menu-items" onClick={showNavbar}>
+                        <li className="toggle-menu">
+                            <Link to="#" className="close-button">
+                                <AiIcons.AiOutlineCloseCircle/>
                             </Link>
                         </li>
-                        {SidebarData.map((element, index) => {
+                        {PageInfoData.map((page, index) => {
                             return (
-                                <li key={index} className={element.cName}>
-                                    <Link to={element.path}>
-                                        {element.icon}
-                                        <span>{element.title}</span>
+                                <li key={index} className="menu-choice">
+                                    <Link to={page.path}>
+                                        {page.icon}
+                                        <span>{page.title}</span>
                                     </Link>
                                 </li>
                             );
