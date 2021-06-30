@@ -15,13 +15,13 @@ body {
   min-height: 100vh;
 }
 
-/* .home, .statistics, .team, .support {
+.home, .train, .stats, .rank, .tutorial {
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-} */
+} 
 
 /* .start {
   display: inline;

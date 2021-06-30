@@ -11,7 +11,10 @@ import NavBar from "./components/NavBar.js";
 
 // Import Pages
 import Home from "./pages/Home";
-import Statistics from "./pages/Statistics"
+import Rank from "./pages/Rank";
+import Stats from "./pages/Stats";
+import Train from "./pages/Train";
+import Tutorial from "./pages/Tutorial";
 
 // Main Component
 const App = () => {
@@ -21,7 +24,11 @@ const App = () => {
       <Router>
         <NavBar/>
         <Switch>
-          
+          <Route path="/" exact component={Home}/>
+          <Route path="/train" component={Train}/>
+          <Route path="/stats" component={Stats}/>
+          <Route path="/rank" component={Rank}/>
+          <Route path="/tutorial" component={Tutorial}/>
         </Switch>
       </Router>
     </div>
