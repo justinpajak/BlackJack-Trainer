@@ -1,0 +1,17 @@
+.train {
+  display: flex;
+  justify-content: center;
+}
+
+.start-button {
+  display: inline;
+  background: black;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: inherit;
+}

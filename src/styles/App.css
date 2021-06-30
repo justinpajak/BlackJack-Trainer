@@ -1,0 +1,17 @@
+/* Styles for site */
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Righteous", cursive;
+}
+
+body {
+  background-image: url("../images/blackjack.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+

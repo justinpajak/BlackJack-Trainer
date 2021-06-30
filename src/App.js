@@ -1,31 +1,36 @@
-import './App.css';
-import { Header } from "./components/Header.js";
-// import { getPoints } from "./services/Points.js";
-import { Button } from "./components/Button.js";
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function App() {
-  const [points, setPoints] = useState(0);
+// Import Styles
+import "./styles/App.css"
 
-  const [runningTrain, setRunningTrain] = useState(false); 
+// Import Routing
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-  // useEffect(() => {
-  //   return getPoints().then((data) => setPoints(data));
-  // }, [points]);
+// Import Components
+import NavBar from "./components/NavBar.js";
 
-  const onStart = () => {
-    setRunningTrain(!runningTrain);
-  };
+// Import Pages
+import Home from "./pages/Home";
+import Rank from "./pages/Rank";
+import Stats from "./pages/Stats";
+import Train from "./pages/Train";
+import Tutorial from "./pages/Tutorial";
+
+// Main Component
+const App = () => {
 
   return (
     <div>
-      <div class="background"></div>
-      <Header title="Blackjack Counting Trainer" points={points} />
-      <Button 
-        onStart={onStart} 
-        bg={runningTrain ? "red" : "black"}
-        text={runningTrain ? "stop" : "start"}
-      />
+      <Router>
+        <NavBar/>
+        <Switch>
+          <Route path="/" exact component={Home}/>
+          <Route path="/train" component={Train}/>
+          <Route path="/stats" component={Stats}/>
+          <Route path="/rank" component={Rank}/>
+          <Route path="/tutorial" component={Tutorial}/>
+        </Switch>
+      </Router>
     </div>
   );
 }

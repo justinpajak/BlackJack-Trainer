@@ -1,10 +1,14 @@
-export function Button({ onStart, bg, text }) {
+import React from 'react';
+
+const Button = ({ onStart, bg, text }) => {
     return (
-        <div class="button">
-            {/* Having trouble with the background of the button */}
-            <button onClick={() => onStart()} class="start" color="{bg}">
+        <div>
+            <button onClick={() => onStart()} className="start-button" style={{backgroundColor: bg}}>
                 {text}
             </button>
         </div>
     )
 }
+
+export default Button;
+
