@@ -15,23 +15,3 @@ body {
   min-height: 100vh;
 }
 
-.home, .train, .stats, .rank, .tutorial {
-  display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-} 
-
-/* .start {
-  display: inline;
-  background: black;
-  color: white;
-  border: none;
-  padding: 20px 40px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-  font-family: inherit;
-} */
