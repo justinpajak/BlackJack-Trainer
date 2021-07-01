@@ -1,4 +1,6 @@
 import React from 'react';
+import * as Env from "./environments.js";
+import Parse from "parse";
 
 // Import Styles
 import "./styles/App.css"
@@ -15,6 +17,9 @@ import Rank from "./pages/Rank";
 import Stats from "./pages/Stats";
 import Train from "./pages/Train";
 import Tutorial from "./pages/Tutorial";
+
+Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
+Parse.serverURL = Env.SERVER_URL;
 
 // Main Component
 const App = () => {
