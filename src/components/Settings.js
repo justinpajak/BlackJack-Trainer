@@ -1,11 +1,10 @@
 import Button from "./Button.js";
 
-const Settings = ({onStart}) => {
+const Settings = ({onEvent}) => {
     return (
         <div className="settings">
             <h1 className="settings-title">Train:</h1>
-            
-            <Button onStart={onStart}/>
+            <Button onEvent={onEvent} cl="start-button" text="start"/>
         </div>
     )
 }

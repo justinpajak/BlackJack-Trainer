@@ -14,16 +14,13 @@ const Train = ({user}) => {
 
     const onStart = () => {
         setRunning(running => !running)
-        setTimeout(() => {
-             setRunning(running => !running);
-        }, 2000);
     };
 
     return (
         <div>
             <div className="new_bg"></div>
             <Points user={user}/>
-            {running ? <Round/> : <Settings onStart={onStart}/>}
+            {running ? <Round running={running} setRunning={setRunning}/> : <Settings onEvent={onStart}/>}
         </div>
     );
 }

@@ -1,8 +1,8 @@
-const Button = ({ onStart }) => {
+const Button = ({ onEvent, cl, text }) => {
     return (
         <div>
-            <button onClick={() => onStart()} className="start-button" style={{backgroundColor: 'black'}}>
-                Start
+            <button onClick={onEvent} className={cl}>
+                {text}
             </button>
         </div>
     )
