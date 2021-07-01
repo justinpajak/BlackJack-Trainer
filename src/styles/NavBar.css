@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .title {
@@ -95,4 +94,12 @@ span {
 .username {
     color: white;
     padding: 0px 20px 0px 0px;
+}
+
+@media all and (max-width: 400px) {
+    .title {
+        font-size: 1.4rem;
+        color: white;
+        padding: 0px 0px 0px 15px;
+    }
 }
