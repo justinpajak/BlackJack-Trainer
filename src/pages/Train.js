@@ -1,22 +1,26 @@
 import {useState} from 'react';
 
 // Import Components
-import Button from "../components/Button";
+import Points from "../components/Points";
+import Round from "../components/Round";
+import Settings from '../components/Settings';
 
 // Import CSS
 import "../styles/Train.css"
 
-const Train = () => {
+const Train = ({user}) => {
 
     const [running, setRunning] = useState(false);
 
     const onStart = () => {
-        setRunning(!running);
-    }
+        setRunning(!running)
+    };
 
     return (
-        <div className="train">
-            <Button onStart={onStart} bg={running ? 'red' : 'black'} text={running ? 'stop' : 'start'}/>
+        <div>
+            <div className="new_bg"></div>
+            <Points user={user}/>
+            {running ? <Round running={running} setRunning={setRunning}/> : <Settings onEvent={onStart}/>}
         </div>
     );
 }

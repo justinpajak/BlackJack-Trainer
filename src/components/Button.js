@@ -1,9 +1,7 @@
-import React from 'react';
-
-const Button = ({ onStart, bg, text }) => {
+const Button = ({ onEvent, cl, text }) => {
     return (
         <div>
-            <button onClick={() => onStart()} className="start-button" style={{backgroundColor: bg}}>
+            <button onClick={onEvent} className={cl}>
                 {text}
             </button>
         </div>

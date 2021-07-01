@@ -9,6 +9,7 @@
 .title {
     font-size: 2rem;
     color: white;
+    padding: 0px 0px 0px 40px;
 }
 
 .bars-button {
@@ -65,7 +66,6 @@
 .menu-choice {
     padding: 10px 10px;
     list-style: none;
-    height: px;
 }
 
 .menu-choice a {
@@ -90,3 +90,16 @@
 span {
     margin-left: 16px;
 } 
+
+.username {
+    color: white;
+    padding: 0px 20px 0px 0px;
+}
+
+@media all and (max-width: 400px) {
+    .title {
+        font-size: 1.4rem;
+        color: white;
+        padding: 0px 0px 0px 15px;
+    }
+}
