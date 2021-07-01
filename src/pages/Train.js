@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 // Import Components
 import Points from "../components/Points";
@@ -21,6 +21,7 @@ const Train = ({user}) => {
 
     return (
         <div>
+            <div className="new_bg"></div>
             <Points user={user}/>
             {running ? <Round/> : <Settings onStart={onStart}/>}
         </div>
