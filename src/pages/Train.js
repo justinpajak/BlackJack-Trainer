@@ -13,7 +13,7 @@ const Train = ({user}) => {
     const [running, setRunning] = useState(false);
 
     const onStart = () => {
-        setRunning(running => !running)
+        setRunning(!running)
     };
 
     return (
