@@ -1,7 +1,9 @@
 import {useState} from 'react';
 
 // Import Components
-import Button from "../components/Button";
+import Points from "../components/Points";
+import Round from "../components/Round";
+import Settings from '../components/Settings';
 
 // Import CSS
 import "../styles/Train.css"
@@ -11,13 +13,16 @@ const Train = ({user}) => {
     const [running, setRunning] = useState(false);
 
     const onStart = () => {
-        setRunning(!running);
-    }
+        setRunning(running => !running)
+        setTimeout(() => {
+             setRunning(running => !running);
+        }, 2000);
+    };
 
     return (
-        <div className="train">
-            <Button onStart={onStart} bg={running ? 'red' : 'black'} text={running ? 'stop' : 'start'}/>
-            <h1>{user}</h1>
+        <div>
+            <Points user={user}/>
+            {running ? <Round/> : <Settings onStart={onStart}/>}
         </div>
     );
 }

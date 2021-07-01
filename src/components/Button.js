@@ -1,10 +1,8 @@
-import React from 'react';
-
-const Button = ({ onStart, bg, text }) => {
+const Button = ({ onStart }) => {
     return (
         <div>
-            <button onClick={() => onStart()} className="start-button" style={{backgroundColor: bg}}>
-                {text}
+            <button onClick={() => onStart()} className="start-button" style={{backgroundColor: 'black'}}>
+                Start
             </button>
         </div>
     )

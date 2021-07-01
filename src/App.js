@@ -20,12 +20,12 @@ import Tutorial from "./pages/Tutorial";
 const App = () => {
 
   // User State
-  const [user, setUser] = useState('user 1');
+  const [user, setUser] = useState('jpajak');
 
   return (
     <div>
       <Router>
-        <NavBar/>
+        <NavBar user={user}/>
         <Switch>
           <Route path="/" exact component={() => <Home/>}/>
           <Route path="/train" component={() => <Train user={user}/>}/>

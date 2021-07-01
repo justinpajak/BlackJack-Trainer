@@ -1,10 +1,4 @@
-.train {
-  display: flex;
-  justify-content: center;
-}
-
 .start-button {
-  display: inline;
   background: black;
   color: white;
   border: none;
@@ -14,4 +8,13 @@
   cursor: pointer;
   font-size: 20px;
   font-family: inherit;
+}
+
+.points {
+  font-size: 30px;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
 }
