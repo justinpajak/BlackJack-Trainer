@@ -16,6 +16,14 @@ import Stats from "./pages/Stats";
 import Train from "./pages/Train";
 import Tutorial from "./pages/Tutorial";
 
+// Import Environment and Parse
+import * as Env from "./environment"
+import Parse from 'parse'
+
+// Initialize Parse
+Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
+Parse.serverURL = Env.serverURL;
+
 // Main Component
 const App = () => {
 
