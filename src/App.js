@@ -23,6 +23,7 @@ import Parse from 'parse'
 // Initialize Parse
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.serverURL;
+import "./services/userDataApi.js";
 
 // Main Component
 const App = () => {
