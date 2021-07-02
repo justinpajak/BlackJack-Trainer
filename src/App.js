@@ -19,17 +19,24 @@ import Tutorial from "./pages/Tutorial";
 // Import Environment and Parse
 import * as Env from "./environment"
 import Parse from 'parse'
-
-// Initialize Parse
-import "./services/userDataApi.js";
+import {
+  getByUserName
+} from "./services/userDataApi";
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
-Parse.serverURL = Env.serverURL;
+Parse.serverURL = Env.SERVER_URL;
+
 
 // Main Component
 const App = () => {
 
   // User State
   const [user, setUser] = useState('jpajak');
+  const [points, setPoints] = useState(0);
+
+  // Get user -> testing
+  useEffect(() => {
+    console.log(getByUserName("user1"));
+  }, [])
 
   return (
     <div>
