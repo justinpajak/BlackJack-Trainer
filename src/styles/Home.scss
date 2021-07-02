@@ -1,0 +1,50 @@
+.login-div {
+    background-color: #ffffff99;
+    margin: 100px auto;
+    width: 500px;
+    padding: 60px;
+
+    .title {
+        color: black;
+        padding-top: 0.5rem;
+        text-align: center;
+    }
+
+    .form {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .form input {
+        font-size: 18px;
+        padding: 10px 20px 10px 5px;
+        border: none;
+        outline: none;
+        background: none;
+    }
+
+    .username, .password {
+        display: block;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .submit {
+        width: 100%;
+        border: none;
+        font-size: 18px;
+        border-radius: 30px;
+        background-color: green;
+        color: white;
+        margin-bottom: 5px;
+        input {
+            display: flex;
+            justify-content: center;
+            color: white;
+            padding: revert;
+            margin: auto auto;
+        }
+    }
+}

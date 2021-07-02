@@ -1,4 +1,4 @@
-const Parse = require('parse');
+// const Parse = require('parse');
 
 const Stats = () => {
     return ( 
