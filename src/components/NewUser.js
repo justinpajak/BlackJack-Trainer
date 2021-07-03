@@ -1,18 +1,20 @@
-const NewUser = () => {
+const NewUser = ({handleSubmit, handleLogin}) => {
+
     return (
-        <div class="login-div">
-            <div class="title">
+        <div className="login-div">
+            <div className="title">
                 Sign in to BlackJack Trainer!
             </div>
-            <div class="form">
+
+            <div className="form" onSubmit={handleSubmit}>
                 <form>
-                    <div class="username">
-                        <input type="text" placeholder="Username" />
+                    <div className="username">
+                        <input type="text" onChange={handleLogin} placeholder="Username" required/>
                     </div>
-                    <div class="password">
-                        <input type="password" placeholder="Password" />
+                    <div className="password">
+                        <input type="password" placeholder="Password" required/>
                     </div>
-                    <div class="submit">
+                    <div className="submit">
                         <input type="submit" value="Submit" />
                     </div>
                 </form>

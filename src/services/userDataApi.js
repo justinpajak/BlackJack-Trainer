@@ -1,10 +1,10 @@
 import Parse from 'parse';
-import { GiConsoleController } from 'react-icons/gi';
 
 // Create a new user - CREATE
-export const createNewUser = (username) => {
+export const createNewUser = (username, password) => {
     const user = new Parse.Object("UserData");
     user.set("username", username);
+    user.set("password", password);
     user.set("points", 0);
     user.set("rounds_wrong", 0);
     user.set("rounds_right", 0);

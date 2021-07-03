@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // Import Styles
 import "./styles/App.css"
@@ -31,23 +31,41 @@ Parse.serverURL = Env.SERVER_URL;
 const App = () => {
 
   // User State
-  const [user, setUser] = useState('jpajak');
+  const [user, setUser] = useState('user');
+  const [password, setPassword] = useState('');
   const [points, setPoints] = useState(0);
+  const [roundsWrong, setRoundsWrong] = useState(0);
+  const [roundsRight, setRoundsRight] = useState(0);
 
-  // Get user -> testing
-  useEffect( async () => {
-    const data = await getDataByUserName('user3');
-    
-  }, [])
+  // Get user data on page load -> load in state
+  // useEffect(async () => {
+  //   const data = await getDataByUserName(user);
+  //   setPoints(data.points);
+  //   setRoundsWrong(data.rounds_wrong);
+  //   setRoundsRight(data.rounds_right);
+  // }, [])
+
+  // Handle new user info -> from form submit
+  const handleSubmitNewUser = (e) => {
+    e.preventDefault();
+    createNewUser(user, password);
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <div>
       <Router>
-        <NavBar user={user}/>
+        <NavBar user={'user1'}/>
         <Switch>
-          <Route path="/" exact component={() => <Home/>}/>
+          <Route path="/" exact component={() => <Home handleSubmit={handleSubmitNewUser} handleLogin={handleLogin}/>}/>
           <Route path="/train" component={() => <Train user={user}/>}/>
-          <Route path="/stats" component={() => <Stats/>}/>
+          <Route path="/stats" component={() => <Stats user={user} 
+                                                       points={points} 
+                                                       roundsWrong={roundsWrong}
+                                                       roundsRight={roundsRight}/>}/>
           <Route path="/rank" component={() => <Rank/>}/>
           <Route path="/tutorial" component={() => <Tutorial/>}/>
         </Switch>
