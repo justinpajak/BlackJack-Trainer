@@ -1,11 +1,11 @@
 import NewUser from "../components/NewUser.js";
 import "../styles/Home.css";
 
-const Home = ({handleSubmit, handleLogin}) => {
+const Home = ({handleSubmit}) => {
 
     return (
         <div className="home">
-            <NewUser handleSubmit={handleSubmit} handleLogin={handleLogin}/>
+            <NewUser handleSubmit={handleSubmit}/>
         </div>
     );
 }

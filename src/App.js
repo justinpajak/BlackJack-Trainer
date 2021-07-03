@@ -38,17 +38,13 @@ const App = () => {
   const [roundsRight, setRoundsRight] = useState(0);
 
   // Creates new user and updates state
-  const handleSubmitNewUser = async (e) => {
-    e.preventDefault();
-    await createNewUser(user, password)
-    const data = await getDataByUserName(user);
+  const handleSubmitNewUser = async (loginData) => {
+    createNewUser(loginData.username, loginData.password)
+    const data = await getDataByUserName(loginData.username);
+    setUser(loginData.username);
     setPoints(data.points);
     setRoundsWrong(data.rounds_wrong);
     setRoundsRight(data.rounds_right);
-  }
-
-  const handleLogin = (e) => {
-    console.log(e.target.value);
   }
 
   return (
@@ -56,8 +52,7 @@ const App = () => {
       <Router>
         <NavBar user={user}/>
         <Switch>
-          <Route path="/" exact component={() => <Home handleSubmit={handleSubmitNewUser} 
-                                                       handleLogin={handleLogin}/>}/>
+          <Route path="/" exact component={() => <Home handleSubmit={loginData => handleSubmitNewUser(loginData)}/>}/>
           <Route path="/train" component={() => <Train user={user}/>}/>
           <Route path="/stats" component={() => <Stats user={user} 
                                                        points={points} 
