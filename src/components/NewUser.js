@@ -9,10 +9,10 @@ const NewUser = ({handleSubmit, handleLogin}) => {
             <div className="form" onSubmit={handleSubmit}>
                 <form>
                     <div className="username">
-                        <input type="text" onChange={handleLogin} placeholder="Username" required/>
+                        <input type="text" name="username" onChange={handleLogin} placeholder="Username" required/>
                     </div>
                     <div className="password">
-                        <input type="password" placeholder="Password" required/>
+                        <input type="password" name="password" onChange={handleLogin} placeholder="Password" required/>
                     </div>
                     <div className="submit">
                         <input type="submit" value="Submit" />

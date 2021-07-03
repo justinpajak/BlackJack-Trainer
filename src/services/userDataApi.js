@@ -15,8 +15,7 @@ export const createNewUser = (username, password) => {
     }
 }
 
-// Read in User Data
-
+// Read in User Data - except password
 export const getDataByUserName = async (username) => {
     const userData = Parse.Object.extend('UserData');
     const query = new Parse.Query(userData);

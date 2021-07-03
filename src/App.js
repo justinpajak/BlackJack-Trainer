@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
 // Import Styles
 import "./styles/App.css"
@@ -31,36 +31,33 @@ Parse.serverURL = Env.SERVER_URL;
 const App = () => {
 
   // User State
-  const [user, setUser] = useState('user');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState('user3');
+  const [password, setPassword] = useState('test');
   const [points, setPoints] = useState(0);
   const [roundsWrong, setRoundsWrong] = useState(0);
   const [roundsRight, setRoundsRight] = useState(0);
 
-  // Get user data on page load -> load in state
-  // useEffect(async () => {
-  //   const data = await getDataByUserName(user);
-  //   setPoints(data.points);
-  //   setRoundsWrong(data.rounds_wrong);
-  //   setRoundsRight(data.rounds_right);
-  // }, [])
-
-  // Handle new user info -> from form submit
-  const handleSubmitNewUser = (e) => {
+  // Creates new user and updates state
+  const handleSubmitNewUser = async (e) => {
     e.preventDefault();
-    createNewUser(user, password);
+    await createNewUser(user, password)
+    const data = await getDataByUserName(user);
+    setPoints(data.points);
+    setRoundsWrong(data.rounds_wrong);
+    setRoundsRight(data.rounds_right);
   }
 
   const handleLogin = (e) => {
-    e.preventDefault();
+    console.log(e.target.value);
   }
 
   return (
     <div>
       <Router>
-        <NavBar user={'user1'}/>
+        <NavBar user={user}/>
         <Switch>
-          <Route path="/" exact component={() => <Home handleSubmit={handleSubmitNewUser} handleLogin={handleLogin}/>}/>
+          <Route path="/" exact component={() => <Home handleSubmit={handleSubmitNewUser} 
+                                                       handleLogin={handleLogin}/>}/>
           <Route path="/train" component={() => <Train user={user}/>}/>
           <Route path="/stats" component={() => <Stats user={user} 
                                                        points={points} 
