@@ -29,7 +29,7 @@ const NavBar = ({user}) => {
                     <Link to="#" className="bars-button">
                         <FaIcons.FaBars onClick={showNavbar}/>
                     </Link>
-                    <div className="title">
+                    <div className="nav_title">
                         BlackJack Trainer
                         <GiPokerHand/>
                     </div>

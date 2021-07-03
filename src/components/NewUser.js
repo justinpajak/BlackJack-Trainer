@@ -20,7 +20,7 @@ const NewUser = ({handleSubmit}) => {
 
     return (
         <div className="login-div">
-            <div className="title">
+            <div className="login_title">
                 Sign in to BlackJack Trainer!
             </div>
 
