@@ -1,7 +1,10 @@
+import NewUser from "../components/NewUser.js";
+import "../styles/Home.css";
+
 const Home = () => {
     return (
         <div className="home">
-            <h1>Home</h1>
+            <NewUser/>
         </div>
     );
 }

@@ -20,7 +20,8 @@ import Tutorial from "./pages/Tutorial";
 import * as Env from "./environment"
 import Parse from 'parse'
 import {
-  getByUserName
+  createNewUser,
+  getDataByUserName
 } from "./services/userDataApi";
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
@@ -34,8 +35,9 @@ const App = () => {
   const [points, setPoints] = useState(0);
 
   // Get user -> testing
-  useEffect(() => {
-    console.log(getByUserName("user1"));
+  useEffect( async () => {
+    const data = await getDataByUserName('user3');
+    
   }, [])
 
   return (
