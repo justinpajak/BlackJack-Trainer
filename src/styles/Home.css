@@ -34,7 +34,7 @@ input {
     border-radius: 30px;
     background-color: green;
     color: black;
-    margin-bottom: 5px;
+    margin: 3px;
 }
 
 input {
@@ -50,6 +50,10 @@ input {
     margin: 100px auto;
     width: 500px;
     padding: 60px;
+}
+
+p.link {
+    text-align: center;
 }
 
 @media all and (max-width: 400px) {

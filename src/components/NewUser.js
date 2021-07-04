@@ -37,7 +37,9 @@ const NewUser = ({handleSubmit}) => {
                     </div>
                 </form>
             </div>
-            {/* Add text to change the typeOfUser, triggers new user page to show */}
+            <p class="link">
+                <a href="/ReturningUser.js">Returning User?</a>
+            </p>
         </div>
     )
 }

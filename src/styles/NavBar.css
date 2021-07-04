@@ -96,6 +96,10 @@ span {
     padding: 0px 20px 0px 0px;
 }
 
+.user-nav {
+    margin-right: 1rem !important;
+}
+
 @media all and (max-width: 400px) {
     .nav_title {
         font-size: 1.4rem;
