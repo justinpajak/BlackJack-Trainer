@@ -25,7 +25,6 @@ import {
   getDataByUserName,
   verifyUserCreds
 } from "./services/userDataApi";
-import { GiWeightLiftingDown } from 'react-icons/gi';
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
 

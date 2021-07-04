@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const Login = ({handleLogin, handleCreate, createUser, create}) => {
+const Login = ({handleLogin, handleCreate}) => {
 
     const [login, setLogin] = useState({username: "", password: ""});
 
@@ -26,29 +26,6 @@ const Login = ({handleLogin, handleCreate, createUser, create}) => {
 
     return (
         <div>
-        {create 
-            ? 
-            <div className="login-div">
-                <div className="login_title">
-                    Create BlackJack Trainer Account!  
-                </div>
-
-                <div className="form">
-                    <form>
-                        <div className="username">
-                            <input type="text" value={login.username} onChange={e => change(e)} name="username" placeholder="Username" required/>
-                        </div>
-                        <div className="password">
-                            <input type="password" value={login.password} onChange={e => change(e)} name="password"  placeholder="Password" required/>
-                        </div>
-                        <div className="submit">
-                            <input type="submit" onClick={e => onCreate(e)} value="Create" />
-                        </div>
-                        <button className="submit" onClick={e => createUser(e)}>Go Back</button>
-                    </form>
-                </div>
-            </div>
-            : 
             <div className="login-div">
                 <div className="login_title">
                     Login in to BlackJack Trainer!
@@ -65,11 +42,10 @@ const Login = ({handleLogin, handleCreate, createUser, create}) => {
                         <div className="submit">
                             <input type="submit" onClick={e => onLogin(e)} value="Login" />
                         </div>
-                        <button className="submit" onClick={e => createUser(e)}>New User?</button>
+                        <button className="submit" onClick={e => onCreate(e)}>Create Account</button>
                     </form>
                 </div>
             </div>
-        }
         </div>
     )
 }
