@@ -98,6 +98,7 @@ span {
 
 .user-nav {
     margin-right: 1rem !important;
+    color: white;
 }
 
 @media all and (max-width: 400px) {
