@@ -21,7 +21,8 @@ import * as Env from "./environment"
 import Parse from 'parse'
 import {
   createNewUser,
-  getDataByUserName
+  getDataByUserName,
+  verifyUserData
 } from "./services/userDataApi";
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
@@ -39,7 +40,7 @@ const App = () => {
 
   // Creates new user and updates state
   const handleSubmitNewUser = async (loginData) => {
-    createNewUser(loginData.username, loginData.password)
+    createNewUser(loginData.username, loginData.password);
     const data = await getDataByUserName(loginData.username);
     setUser(loginData.username);
     setPoints(data.points);
@@ -47,12 +48,16 @@ const App = () => {
     setRoundsRight(data.rounds_right);
   }
 
+  const handleSubmitReturningUser = async (loginData) => {
+    verifyUserData(loginData.username, loginData.password);
+  }
+
   return (
     <div>
       <Router>
         <NavBar user={user}/>
         <Switch>
-          <Route path="/" exact component={() => <Home handleSubmit={loginData => handleSubmitNewUser(loginData)}/>}/>
+          <Route path="/" exact component={() => <Home handleSubmit={loginData => handleSubmitNewUser(loginData)} returningSubmit={loginData => handleSubmitReturningUser(loginData)}/>}/>
           <Route path="/train" component={() => <Train user={user}/>}/>
           <Route path="/stats" component={() => <Stats user={user} 
                                                        points={points} 

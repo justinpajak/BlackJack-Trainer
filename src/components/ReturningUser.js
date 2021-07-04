@@ -1,8 +1,6 @@
 import {useState} from 'react';
-import React, { Component } from "react";
 
-const NewUser = ({handleSubmit}) => {
-
+const ReturningUser = ({handleSubmit}) => {
     const [login, setLogin] = useState({username: "", password: ""});
 
     const change = (e) => {
@@ -22,7 +20,7 @@ const NewUser = ({handleSubmit}) => {
     return (
         <div className="login-div">
             <div className="login_title">
-                Sign Up for BlackJack Trainer!
+                Login to BlackJack Trainer!
             </div>
 
             <div className="form">
@@ -38,11 +36,11 @@ const NewUser = ({handleSubmit}) => {
                     </div>
                 </form>
             </div>
-            {/* <p class="link">
-                <a href="/ReturningUser.js">Returning User?</a>
-            </p> */}
+            <p class="link">
+                <a href="/NewUser.js">New User?</a>
+            </p>
         </div>
     )
 }
 
-export default NewUser;
+export default ReturningUser; 
