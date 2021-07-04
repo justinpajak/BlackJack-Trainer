@@ -11,7 +11,7 @@
 }
 
 input {
-    font-size: 18px;
+    font-size: 22px;
     padding: 10px 20px 10px 5px;
     border: none;
     outline: none;
@@ -30,11 +30,16 @@ input {
 .submit {
     width: 100%;
     border: none;
-    font-size: 18px;
+    font-size: 22px;
     border-radius: 30px;
+    padding: 10px;
     background-color: green;
     color: black;
     margin: 3px;
+}
+
+.submit:active {
+    transform: scale(1.05);
 }
 
 input {
@@ -43,6 +48,7 @@ input {
     color: black;
     padding: revert;
     margin: auto auto;
+    cursor: pointer;
 }
 
 .login-div {
@@ -54,6 +60,21 @@ input {
 
 p.link {
     text-align: center;
+}
+
+.new-user {
+    width: 100%;
+    border: none;
+    font-size: 22px;
+    border-radius: 30px;
+    background-color: green;
+    color: black;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.new-user:active {
+    transform: scale(1.05);
 }
 
 @media all and (max-width: 400px) {
