@@ -58,12 +58,16 @@ const App = () => {
   }
 
   const handleCreate = async (loginData) => {
-    createNewUser(loginData.username, loginData.password);
-    setUser(loginData.username);
-    setPoints(0);
-    setRoundsWrong(0);
-    setRoundsRight(0);
-    setLoggedIn(true);
+    if (loginData.username.length === 0 || loginData.password.length < 7) {
+      alert("Enter a username and set password more than 8 characters");
+    } else {
+      createNewUser(loginData.username, loginData.password);
+      setUser(loginData.username);
+      setPoints(0);
+      setRoundsWrong(0);
+      setRoundsRight(0);
+      setLoggedIn(true);
+    }
   }
 
   // Log out user

@@ -7,7 +7,7 @@ const Home = ({handleLogin, handleCreate}) => {
     const [create, setCreate] = useState(false);
 
     const createUser = () => {
-        setCreate(true);
+        setCreate(!create);
     }
 
     return (

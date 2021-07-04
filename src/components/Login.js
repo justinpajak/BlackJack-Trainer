@@ -44,6 +44,7 @@ const Login = ({handleLogin, handleCreate, createUser, create}) => {
                         <div className="submit">
                             <input type="submit" onClick={e => onCreate(e)} value="Create" />
                         </div>
+                        <button className="submit" onClick={e => createUser(e)}>Go Back</button>
                     </form>
                 </div>
             </div>
@@ -64,9 +65,9 @@ const Login = ({handleLogin, handleCreate, createUser, create}) => {
                         <div className="submit">
                             <input type="submit" onClick={e => onLogin(e)} value="Login" />
                         </div>
+                        <button className="submit" onClick={e => createUser(e)}>New User?</button>
                     </form>
                 </div>
-                <button onClick={createUser} className="new-user">New User?</button>
             </div>
         }
         </div>
