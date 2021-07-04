@@ -5,7 +5,7 @@ const Login = ({handleLogin, handleCreate}) => {
     const [login, setLogin] = useState({username: "", password: ""});
 
     const change = (e) => {
-        if (e.target.name == "username") {
+        if (e.target.name === "username") {
             setLogin({username: e.target.value, password: login.password});
         } else {
             setLogin({username: login.username, password: e.target.value});
