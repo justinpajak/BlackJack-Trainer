@@ -33,15 +33,15 @@ export const getDataByUserName = async (username) => {
 }
 
 // Find user -- verify if in database for login page
-export const verifyUserData = async (username, password) => {
+export const verifyUserCreds = async (username, password) => {
     const userData = Parse.Object.extend("UserData");
     const query = new Parse.Query(userData); 
-    try {
-        const userName = query.equalTo('username', username); 
-        const userPassword = query.equalTo('password', password);
-        return userName.equals(userPassword) ? true : false; 
+    query.equalTo('username', username);
+    var user = [];
+    if ((user = await query.find()).length !== 0) {
+        if (user[0].get('password') === password) {
+            return true;
+        }
     }
-    catch (error) {
-        console.log("Error getting user data", error); 
-    }
+    return false;
 }

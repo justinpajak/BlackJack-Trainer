@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar.js";
 
 // Import Pages
 import Home from "./pages/Home";
+import HomeLoggedIn from "./pages/HomeLoggedIn";
 import Rank from "./pages/Rank";
 import Stats from "./pages/Stats";
 import Train from "./pages/Train";
@@ -22,7 +23,7 @@ import Parse from 'parse'
 import {
   createNewUser,
   getDataByUserName,
-  verifyUserData
+  verifyUserCreds
 } from "./services/userDataApi";
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
@@ -31,25 +32,47 @@ Parse.serverURL = Env.SERVER_URL;
 // Main Component
 const App = () => {
 
-  // User State
-  const [user, setUser] = useState('user3');
-  const [password, setPassword] = useState('test');
+  // User Data State
+  const [user, setUser] = useState('');
   const [points, setPoints] = useState(0);
   const [roundsWrong, setRoundsWrong] = useState(0);
   const [roundsRight, setRoundsRight] = useState(0);
 
-  // Creates new user and updates state
-  const handleSubmitNewUser = async (loginData) => {
-    createNewUser(loginData.username, loginData.password);
-    const data = await getDataByUserName(loginData.username);
-    setUser(loginData.username);
-    setPoints(data.points);
-    setRoundsWrong(data.rounds_wrong);
-    setRoundsRight(data.rounds_right);
+  // Login State
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  // Login user and update state if credentials are correct
+  const handleLogin = async (loginData) => {
+    const res = await verifyUserCreds(loginData.username, loginData.password);
+    if (res) {
+      const data = await getDataByUserName(loginData.username);
+      setUser(loginData.username);
+      setPoints(data.points);
+      setRoundsWrong(data.rounds_wrong);
+      setRoundsRight(data.rounds_right);
+      setLoggedIn(true);
+    }
+    else {
+      alert("Invalid username or password");
+    }
   }
 
-  const handleSubmitReturningUser = async (loginData) => {
-    verifyUserData(loginData.username, loginData.password);
+  const handleCreate = async (loginData) => {
+    createNewUser(loginData.username, loginData.password);
+    setUser(loginData.username);
+    setPoints(0);
+    setRoundsWrong(0);
+    setRoundsRight(0);
+    setLoggedIn(true);
+  }
+
+  // Log out user
+  const logOut = () => {
+    setLoggedIn(false);
+    setUser('');
+    setPoints(0);
+    setRoundsWrong(0);
+    setRoundsRight(0);
   }
 
   return (
@@ -57,7 +80,8 @@ const App = () => {
       <Router>
         <NavBar user={user}/>
         <Switch>
-          <Route path="/" exact component={() => <Home handleSubmit={loginData => handleSubmitNewUser(loginData)} returningSubmit={loginData => handleSubmitReturningUser(loginData)}/>}/>
+          {!loggedIn ? <Route path="/" exact component={() => <Home handleLogin={loginData => handleLogin(loginData)} handleCreate={loginData => handleCreate(loginData)}/>}/>
+                     : <Route path="/" exact component={() => <HomeLoggedIn logOut={logOut}/>}/>}
           <Route path="/train" component={() => <Train user={user}/>}/>
           <Route path="/stats" component={() => <Stats user={user} 
                                                        points={points} 

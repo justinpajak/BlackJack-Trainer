@@ -1,17 +1,18 @@
-import "../styles/Home.css";
-import NewUser from "../components/NewUser";
-import ReturningUser from "../components/ReturningUser";
+import {useState} from 'react';
+import "../styles/Login.css";
+import Login from "../components/Login";
 
-import { useEffect, useState } from "react";
+const Home = ({handleLogin, handleCreate}) => {
 
-const Home = ({handleSubmit}) => {
-    const [returningUser, setReturningUser] = useState(true); 
+    const [create, setCreate] = useState(false);
+
+    const createUser = () => {
+        setCreate(true);
+    }
 
     return (
         <div className="home">
-            {returningUser ? 
-                <ReturningUser handleSubmit={handleSubmit}/> :
-                <NewUser returningSubmit={handleSubmit}/>}
+            <Login create={create} handleCreate={handleCreate} handleLogin={handleLogin} createUser={createUser}/>
         </div>
     );
 }
