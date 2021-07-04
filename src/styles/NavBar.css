@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.title {
+.nav_title {
     font-size: 2rem;
     color: white;
     padding: 0px 0px 0px 40px;
@@ -97,7 +97,7 @@ span {
 }
 
 @media all and (max-width: 400px) {
-    .title {
+    .nav_title {
         font-size: 1.4rem;
         color: white;
         padding: 0px 0px 0px 15px;
