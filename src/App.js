@@ -28,7 +28,6 @@ import {
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
 
-
 // Main Component
 const App = () => {
 

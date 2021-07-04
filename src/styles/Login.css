@@ -53,7 +53,7 @@ input {
 
 .login-div {
     background-color: #ffffff99;
-    margin: 100px auto;
+    margin: 50px auto;
     width: 500px;
     padding: 60px;
 }
@@ -80,7 +80,7 @@ p.link {
 @media all and (max-width: 400px) {
     .login-div {
         background-color: #ffffff99;
-        margin: 100px auto;
+        margin: 50px auto;
         width: 300px;
         padding: 60px;
     }    
