@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Import Styles
 import "./styles/App.css"
@@ -25,6 +25,7 @@ import {
   getDataByUserName,
   verifyUserCreds
 } from "./services/userDataApi";
+import { GiWeightLiftingDown } from 'react-icons/gi';
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
 
@@ -77,6 +78,10 @@ const App = () => {
     setRoundsWrong(0);
     setRoundsRight(0);
   }
+
+  useEffect(() => {
+    window.scrollTo(-50, 0);
+  });
 
   return (
     <div>
