@@ -62,11 +62,9 @@ const App = () => {
       alert("Enter a username and set password more than 8 characters");
     } 
     if (await checkUserExists(loginData.username) == true) {
-      console.log("checkUserExists returned true"); 
       alert("Username already exists");
     }
     else {
-      console.log("new user is created");
       createNewUser(loginData.username, loginData.password);
       setUser(loginData.username);
       setPoints(0);
