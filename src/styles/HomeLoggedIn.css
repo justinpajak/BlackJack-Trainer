@@ -1,0 +1,11 @@
+.logged-in {
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 20%;
+}
+
+.logged-in button {
+    height: 2rem;
+    width: 6rem;
+}
