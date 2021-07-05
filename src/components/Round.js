@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import Button from './Button.js'
 import {cards} from "../Data/ImageDump.js"
+import "../styles/Round.css";
 
 const Round = ({running, setRunning}) => {
 
@@ -22,9 +23,9 @@ const Round = ({running, setRunning}) => {
     }, [cardsShown]);
 
     return (
-        <div>
-            <img src={cards[index]}/>
-            <Button onEvent={goBack} cl="start-button" text="goback"/>
+        <div class="rounds">
+            <img src={cards[index]} class="cards"/>
+            <Button onEvent={goBack} cl="start-button" text="Go Back"/>
         </div>
     )
 }

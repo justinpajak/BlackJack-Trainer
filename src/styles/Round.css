@@ -1,0 +1,17 @@
+.rounds {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards {
+    width: 200px; 
+    justify-content: center;
+}
+
+button.start-button {
+    margin: 0 auto;
+    display: block;
+    margin-top: 30px;
+}
