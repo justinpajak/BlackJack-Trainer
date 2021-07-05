@@ -23,8 +23,8 @@ const Round = ({running, setRunning}) => {
     }, [cardsShown]);
 
     return (
-        <div class="rounds">
-            <img src={cards[index]} class="cards"/>
+        <div className="rounds">
+            <img src={cards[index]} className="cards"/>
             <Button onEvent={goBack} cl="start-button" text="Go Back"/>
         </div>
     )

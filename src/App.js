@@ -21,6 +21,7 @@ import Tutorial from "./pages/Tutorial";
 import * as Env from "./environment"
 import Parse from 'parse'
 import {
+  checkUserExists,
   createNewUser,
   getDataByUserName,
   verifyUserCreds
@@ -60,18 +61,18 @@ const App = () => {
     if (loginData.username.length === 0 || loginData.password.length < 7) {
       alert("Enter a username and set password more than 8 characters");
     } 
+    if (checkUserExists(loginData.username) == true) {
+      console.log("checkUserExists returned true"); 
+      alert("Username already exists");
+    }
     else {
-      if (verifyUserCreds(loginData.username, loginData.password)) {
-        alert("Username already exists");
-      }
-      else {
-        createNewUser(loginData.username, loginData.password);
-        setUser(loginData.username);
-        setPoints(0);
-        setRoundsWrong(0);
-        setRoundsRight(0);
-        setLoggedIn(true);
-      }
+      console.log("new user is created");
+      createNewUser(loginData.username, loginData.password);
+      setUser(loginData.username);
+      setPoints(0);
+      setRoundsWrong(0);
+      setRoundsRight(0);
+      setLoggedIn(true);
     }
   }
 

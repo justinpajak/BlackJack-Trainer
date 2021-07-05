@@ -40,10 +40,27 @@ export const verifyUserCreds = async (username, password) => {
     const query = new Parse.Query(userData); 
     query.equalTo('username', username);
     var user = [];
+    console.log("before if");
     if ((user = await query.find()).length !== 0) {
+        console.log("outer if"); 
         if (user[0].get('password') === createHmac('sha256', password).digest('hex')) {
+            console.log("inner if");
             return true;
         }
     }
+    return false;
+}
+
+export const checkUserExists = async (username) => {
+    const userData = Parse.Object.extend("UserData");
+    const query = new Parse.Query(userData);
+    query.equalTo('username', username);
+    var user = [];
+    console.log("before if");
+    if ((user = await query.find()).length !== 0) {
+        console.log("return true");
+        return true;
+    }
+    console.log("return false");
     return false;
 }
