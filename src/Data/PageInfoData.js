@@ -5,6 +5,7 @@ import { GiPokerHand} from 'react-icons/gi'
 import {ImStatsDots} from 'react-icons/im' 
 import {BiBook, BiTrophy} from "react-icons/bi"
 
+// titles, paths, and icons for navigation bar
 export const PageInfoData = [
     {
         title: 'Home',

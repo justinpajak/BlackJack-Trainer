@@ -34,7 +34,7 @@ export const getDataByUserName = async (username) => {
     }
 }
 
-// Find user -- verify if in database for login page
+// Validate user credentials (username and password)
 export const verifyUserCreds = async (username, password) => {
     const userData = Parse.Object.extend("UserData");
     const query = new Parse.Query(userData); 
@@ -48,6 +48,7 @@ export const verifyUserCreds = async (username, password) => {
     return false;
 }
 
+// Find user -- check if in database for login page
 export const checkUserExists = async (username) => {
     const userData = Parse.Object.extend("UserData");
     const query = new Parse.Query(userData);

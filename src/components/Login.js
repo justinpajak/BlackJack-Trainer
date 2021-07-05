@@ -1,9 +1,11 @@
 import {useState} from 'react';
 
+// Login page component -- can either login or create new user depending on which button is pressed
 const Login = ({handleLogin, handleCreate}) => {
 
     const [login, setLogin] = useState({username: "", password: ""});
 
+    // whenever new text is inputted, username and password get updated
     const change = (e) => {
         if (e.target.name === "username") {
             setLogin({username: e.target.value, password: login.password});
@@ -12,12 +14,14 @@ const Login = ({handleLogin, handleCreate}) => {
         }
     };
 
+    // when "Login" button is pressed, handleLogin() is called
     const onLogin = (e) => {
         e.preventDefault();
         handleLogin(login);
         setLogin({username: '', password: ''});
     };
 
+    // when "Create Account" button is pressed, handleCreate() is called
     const onCreate = (e) => {
         e.preventDefault();
         handleCreate(login);

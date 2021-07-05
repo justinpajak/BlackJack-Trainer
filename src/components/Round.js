@@ -7,6 +7,7 @@ const Round = ({running, setRunning}) => {
 
     const [cardsShown, setCardsShown] = useState(1);
 
+    // set index to show random card
     const [index, setIndex] = useState(Math.floor(Math.random() * cards.length));
 
     const goBack = () => {

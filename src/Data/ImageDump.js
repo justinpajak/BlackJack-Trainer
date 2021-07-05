@@ -1,3 +1,5 @@
+// storage for all 52 cards
+
 import cardClubs2 from "../images/cardClubs2.png";
 import cardClubs3 from "../images/cardClubs3.png";
 import cardClubs4 from "../images/cardClubs4.png";
