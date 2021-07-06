@@ -61,6 +61,7 @@ const App = () => {
   const handleCreate = async (loginData) => {
     if (loginData.username.length === 0 || loginData.password.length < 7) {
       alert("Enter a username and set password more than 8 characters");
+      return;
     } 
     if (await checkUserExists(loginData.username) === true) {
       alert("Username already exists");
