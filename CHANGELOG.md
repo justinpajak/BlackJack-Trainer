@@ -1,4 +1,4 @@
-v0.2.0 - 2021-05-05
+v0.2.0 - 2021-07-05
 <hr/>
 - Added Home Page navigation and routing <br/>
 - Added dynamic routing based on login in or create user <br/>
