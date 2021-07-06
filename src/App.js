@@ -62,7 +62,7 @@ const App = () => {
     if (loginData.username.length === 0 || loginData.password.length < 7) {
       alert("Enter a username and set password more than 8 characters");
     } 
-    if (await checkUserExists(loginData.username) == true) {
+    if (await checkUserExists(loginData.username) === true) {
       alert("Username already exists");
     }
     else {
