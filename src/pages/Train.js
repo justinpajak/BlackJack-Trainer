@@ -20,7 +20,7 @@ const Train = ({user}) => {
         <div>
             <div className="new_bg"></div>
             <Points user={user}/>
-            {running ? <Round running={running} setRunning={setRunning}/> : <Settings onEvent={onStart}/>}
+            {/* {running ? <Round running={running} setRunning={setRunning}/> : <Settings onEvent={onStart}/>} */}
         </div>
     );
 }
