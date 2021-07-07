@@ -32,7 +32,7 @@ const Login = ({handleLogin, handleCreate}) => {
         <div>
             <div className="login-div">
                 <div className="login_title">
-                    Login in to BlackJack Trainer!
+                    Login to BlackJack Trainer!
                 </div>
 
                 <div className="form">
