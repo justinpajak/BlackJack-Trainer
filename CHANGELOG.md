@@ -1,3 +1,8 @@
+v0.1.0 - 2021-06-30
+<hr/>
+- Created navigation bar
+- Created background image formatting and layout
+
 v0.2.0 - 2021-07-05
 <hr/>
 - Added Home Page navigation and routing <br/>
