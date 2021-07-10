@@ -2,7 +2,7 @@ import {useState} from "react";
 import AuthForm from "./AuthForm";
 import {createUser, loginUser} from "./AuthService";
 
-const Auth = ({user, setUser}) => {
+const Auth = ({user, setUser, setLoggedIn}) => {
 
     const [newUser, setNewUser] = useState({
         username: "",
@@ -19,13 +19,18 @@ const Auth = ({user, setUser}) => {
 
     const onLogin = async (e) => {
         e.preventDefault();
-        loginUser(newUser);
+        if (await loginUser(newUser)) {
+            setUser({...user, username: newUser.username});
+            setLoggedIn(true);
+        };
     }
 
     const onRegister = async (e) => {
         e.preventDefault();
-        await createUser(newUser);
-        setUser({...user, username: newUser.username});
+        if (await createUser(newUser)) {
+            setUser({...user, username: newUser.username});
+            setLoggedIn(true);
+        }
     }
     
     return (

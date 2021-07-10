@@ -5,7 +5,7 @@ const Home = ({handleLogin, handleCreate}) => {
 
     return (
         <div className="home">
-            <Login handleCreate={handleCreate} handleLogin={handleLogin}/>
+           
         </div>
     );
 }

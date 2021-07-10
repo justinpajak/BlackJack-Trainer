@@ -17,6 +17,7 @@ const AuthForm = ({user, onChange, onLogin, onRegister }) => {
                                 onChange={onChange}
                                 placeholder="Username"
                                 name="username"
+                                autoComplete="current-username"
                                 required
                             />
                         </div>
@@ -27,6 +28,7 @@ const AuthForm = ({user, onChange, onLogin, onRegister }) => {
                                 value={user.password}
                                 onChange={onChange}
                                 placeholder="Password"
+                                autoComplete="current-password"
                                 name="password"
                                 required
                             />

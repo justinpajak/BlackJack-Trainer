@@ -10,6 +10,9 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-do
 import NavBar from "./components/NavBar.js";
 import Auth from "./components/Auth/Auth";
 
+// Import Services
+import {getDataByUserName} from "./services/userDataApi";
+
 // Import Environment and Parse
 import * as Env from "./environment"
 import Parse from 'parse'
@@ -22,21 +25,34 @@ const App = () => {
   // User Data State
   const [user, setUser] = useState({username: "",
                                     points: 0,
-                                    round_wrong: 0,
+                                    rounds_wrong: 0,
                                     rounds_right: 0});
 
-  useEffect(() => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const getUserData = async () => {
+    const data = await getDataByUserName(user.username);
+    // setUser({...user, points: data.points,
+    //                   rounds_wrong: data.rounds_wrong,
+    //                   rounds_right: data.rounds_right});
+  }
+
+  useEffect(async () => {
+    const currentUser = Parse.User.current();
+    if (currentUser) {
+      setUser({...user, username: currentUser.get("username")})
+      getUserData();
+    }
     window.scrollTo(-50, 0);
-  });
+  }, []);
 
   return (
     <div>
       <Router>
         <NavBar user={user}/>
         <Switch>
-          <Route path="/auth" component={() => <Auth user={user} setUser={setUser}/>}/>
+          <Route path="/auth" component={() => <Auth setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/>
           {/* <Route path="/home" component={}/> */}
-
           <Redirect to="/auth"/>
         </Switch>
       </Router>

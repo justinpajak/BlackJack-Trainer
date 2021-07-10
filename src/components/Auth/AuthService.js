@@ -2,6 +2,7 @@ import Parse from 'parse';
 
 export const createUser = async (newUser) => {
     const userData = new Parse.Object("UserData");
+    userData.set("username", newUser.username);
     userData.set("points", 0);
     userData.set("rounds_right", 0);
     userData.set("rounds_wrong", 0);
@@ -11,23 +12,27 @@ export const createUser = async (newUser) => {
     user.set("password", newUser.password);
     try {
         await user.signUp();
+        userData.set("UserCreds", user);
+        try {
+            alert("Account successfully created");
+            return await userData.save();
+        } catch(error) {
+            alert("Error");
+        }
     } catch (error) {
-        alert("Error");
+        alert("Account already exists");
         console.log(error);
-    }
-
-    userData.set("UserCreds", user);
-    try {
-        return await userData.save();
-    } catch(error) {
-        alert("Error");
     }
 };
 
 export const loginUser = async (userInfo) => {
-    try {
-        const ret = await Parse.User.logIn(userInfo.username, userInfo.password);
+    try {   
+        await Parse.User.logIn(userInfo.username, userInfo.password)
+        alert("Login Success");
+        return true;
     } catch (error) {
-        alert("Invalid Username or Password");
+        alert("Incorrect username or password");
+        return false;
     }
+    
 }
