@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 
 // Import Components
@@ -7,7 +7,7 @@ import Points from "./Points";
 // Import CSS
 import "../../styles/Train.css"
 
-const Train = ({user}) => {
+const Train = ({user, loggedIn}) => {
 
     const [running, setRunning] = useState(false);
 
@@ -17,8 +17,12 @@ const Train = ({user}) => {
 
     return (
         <div>
-            {/* <div className="new_bg"></div>
-            <Points user={user.points}/> */}
+            {loggedIn 
+            ? <div>
+                <div className="new_bg"></div>
+                <Points user={user.points}/>
+              </div>
+            : <Redirect to="/auth"/>}
         </div>
     );
 }

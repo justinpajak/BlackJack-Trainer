@@ -43,14 +43,19 @@ const App = () => {
     window.scrollTo(-50, 0);
   }, []);
 
+  useEffect(() => {
+    console.log(loggedIn);
+  },[loggedIn])
+  
   return (
     <div>
       <Router>
         <NavBar user={user}/>
         <Switch>
-          {!loggedIn 
+          {!loggedIn
           ? <Route path="/auth" component={() => <Auth setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
-          : <Route path="/" component={() => <Home setUser={setUser} setLoggedIn={setLoggedIn}/>}/>}
+          : <Route exact path="/" component={() => <Home setUser={setUser} setLoggedIn={setLoggedIn}/>}/>}
+          <Route path="/train" component={() => <Train user={user} loggedIn={loggedIn}/>}/>
           <Redirect to="/auth"/>
         </Switch>
       </Router>

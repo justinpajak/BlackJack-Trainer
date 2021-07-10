@@ -26,10 +26,14 @@ const Auth = ({user, setUser, setLoggedIn}) => {
     }
 
     const onRegister = async (e) => {
-        e.preventDefault();
-        if (await createUser(newUser)) {
-            setUser({...user, username: newUser.username});
-            setLoggedIn(true);
+        e.preventDefault()
+        if (newUser.password.length >= 8) {
+            if (await createUser(newUser)) {
+                setUser({...user, username: newUser.username});
+                setLoggedIn(true);
+            }
+        } else {
+            alert("Password must be at least 8 characters");
         }
     }
     

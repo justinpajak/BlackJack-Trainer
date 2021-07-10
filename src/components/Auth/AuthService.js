@@ -20,7 +20,7 @@ export const createUser = async (newUser) => {
             alert("Error");
         }
     } catch (error) {
-        alert("Account already exists");
+        alert("Account already exists or user name not provided");
         console.log(error);
     }
 };
