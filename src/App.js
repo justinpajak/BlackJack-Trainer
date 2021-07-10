@@ -11,6 +11,9 @@ import NavBar from "./components/NavBar.js";
 import Auth from "./components/Auth/Auth";
 import Home from "./components/Home/Home";
 import Train from "./components/Train/Train";
+import Stats from "./components/Stats/Stats";
+import Rank from "./components/Ranking/Rank";
+import Tutorial from "./components/Tutorial/Tutorial";
 
 // Import Environment and Parse
 import * as Env from "./environment"
@@ -31,15 +34,16 @@ const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const getUserData = () => {
-    // Get user data using getDataByUserName() and populate user state
+  const getUserData = async (username) => {
+    const data = await getDataByUserName(username);
+    setUser({...user, points: data.points, rounds_wrong: data.rounds_wrong, rounds_right: data.rounds_right});
   }
 
   useEffect(() => {
     const currentUser = Parse.User.current();
     if (currentUser) {
       setUser({...user, username: currentUser.get("username")})
-      getUserData();
+      getUserData(currentUser.get("username"));
       setLoggedIn(true);
     }
     window.scrollTo(-50, 0);
@@ -58,22 +62,12 @@ const App = () => {
           ? <Route path="/auth" component={() => <Auth setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
           : <Route exact path="/home" component={() => <Home setUser={setUser} setLoggedIn={setLoggedIn}/>}/>}
           <Route path="/train" component={() => <Train user={user} loggedIn={loggedIn}/>}/>
-
-          {/* Integrate stats, rank, and tutorial the same way as Train above here*/}
-
-          {!loggedIn ? <Redirect to="/auth"/> : <Redirect to="/home"/>}
-        </Switch>
-
-      </Router>
-      {/*
-          <Route path="/stats" component={() => <Stats user={user} 
-                                                       points={points} 
-                                                       roundsWrong={roundsWrong}
-                                                       roundsRight={roundsRight}/>}/>
+          <Route path="/stats" component={() => <Stats user={user} points={user.points} roundsWrong={user.rounds_wrong} roundsRight={user.rounds_right}/>}/>
           <Route path="/rank" component={() => <Rank/>}/>
           <Route path="/tutorial" component={() => <Tutorial/>}/>
+          {!loggedIn ? <Redirect to="/auth"/> : <Redirect to="/home"/>}
         </Switch>
-      </Router> */}
+      </Router>
     </div>
   );
 }

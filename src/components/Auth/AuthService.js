@@ -17,22 +17,21 @@ export const createUser = async (newUser) => {
             alert("Account successfully created");
             return await userData.save();
         } catch(error) {
-            alert("Error");
+            alert("Error: account was not created");
         }
     } catch (error) {
-        alert("Account already exists or user name not provided");
+        alert("Account already exists or username not provided");
         console.log(error);
     }
 };
 
 export const loginUser = async (userInfo) => {
     try {   
-        await Parse.User.logIn(userInfo.username, userInfo.password)
+        await Parse.User.logIn(userInfo.username, userInfo.password);
         alert("Login Success");
         return true;
     } catch (error) {
         alert("Incorrect username or password");
         return false;
     }
-    
 }
