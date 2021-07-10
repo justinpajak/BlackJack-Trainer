@@ -1,5 +1,4 @@
 import Parse from 'parse';
-import { GiConsoleController } from 'react-icons/gi';
 
 // Read in User Data - except password
 export const getDataByUserName = async (username) => {
@@ -8,7 +7,7 @@ export const getDataByUserName = async (username) => {
     query.equalTo('username', username);
     try {
         const results = await query.find();
-        const data = new Object();
+        const data = {};
         data.points = results[0].get('points');
         data.rounds_right = results[0].get('rounds_right');
         data.rounds_wrong = results[0].get('rounds_wrong');

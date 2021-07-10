@@ -39,6 +39,8 @@ const App = () => {
     setUser({...user, points: data.points, rounds_wrong: data.rounds_wrong, rounds_right: data.rounds_right});
   }
 
+  // this useEffect only runs when the app is mounted
+  // gets the current user if session is still good
   useEffect(() => {
     const currentUser = Parse.User.current();
     if (currentUser) {

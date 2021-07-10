@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom';
 
 // Import Components
 import Points from "./Points";
+import Round from "./Round"; 
 
 // Import CSS
 import "../../styles/Train.css"
@@ -20,7 +21,8 @@ const Train = ({user, loggedIn}) => {
             {loggedIn 
             ? <div>
                 <div className="new_bg"></div>
-                <Points user={user.points}/>
+                <Points points={user.points}/>
+                <Round running={running} setRunning={setRunning}/>
               </div>
             : <Redirect to="/auth"/>}
         </div>

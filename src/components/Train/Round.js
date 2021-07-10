@@ -1,15 +1,15 @@
 import {useState, useEffect} from 'react';
-import Button from './Button.js'
-import {cards} from "../Data/ImageDump.js"
-import "../styles/Round.css";
+import Button from '../Button.js'
+import {cards} from "../../Data/ImageDump"; 
+import "../../styles/Round.css";
 
 const Round = ({running, setRunning}) => {
 
-    // State for number of cards rounds in each round
+    // State for number of cards shown in each round
     const [cardsShown, setCardsShown] = useState(0);
 
     // Set state for number of rounds played so far and other states required
-    //const [round, setRound] = useState(0);
+    const [round, setRound] = useState(0);
 
     // State for showing certain cards
     const [showDealerL, setShowDealerL] = useState(false);
@@ -45,48 +45,48 @@ const Round = ({running, setRunning}) => {
     }
 
     const updateCount = (idx) => {
-        if (idx in pOne) {
+        console.log("updateCount called with idx = ", idx);
+        if (mOne.includes(idx)) {
+            console.log(count);
+            setCount(count - 1);
+        } 
+        if (pOne.includes(idx)) {
+            console.log(count);
             setCount(count + 1);
         }
-        else if (idx in mOne) {
-            setCount(count - 1);
-        }
+        console.log("updated count ", count); 
     }
 
-    const play_round = () => {
+    const play_round = async () => {
         setTimeout(() => {
             setShowDealerL(true);
             const idx = randIdx();
             setDLIdx(idx);
-            updateCount(idx);
-            console.log(idx);
+            updateCount(17);
         }, 1000);
         setTimeout(() => {
             setShowDealerR(true);
             const idx = randIdx();
             setDRIdx(idx);
-            updateCount(idx);
-            console.log(idx);
+            updateCount(0);
         }, 2000);
         setTimeout(() => {
             setShowUserL(true);
             const idx = randIdx();
             setULIdx(idx);
-            updateCount(idx);
-            console.log(idx);
+            updateCount(30);
         }, 3000);
         setTimeout(() => {
             setShowUserR(true);
             const idx = randIdx();
             setURIdx(idx);
-            updateCount(idx);
-            console.log(idx);
+            updateCount(15);
         }, 4000);
     }
 
     useEffect(() => {
         play_round();
-    }, [cardsShown])
+    }, [cardsShown]);
 
     return (
         <div className="rounds">
@@ -104,4 +104,4 @@ const Round = ({running, setRunning}) => {
     )
 }
 
-export default Round
+export default Round;
