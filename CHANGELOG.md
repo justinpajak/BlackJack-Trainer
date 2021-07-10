@@ -16,4 +16,5 @@
 
 **v0.3.0 - 2021-07-10**
 ---
-- Finished routing (added protected routing)
+- Added authentication component
+- Finished (protected) routing
