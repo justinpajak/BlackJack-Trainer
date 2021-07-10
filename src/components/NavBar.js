@@ -33,7 +33,7 @@ const NavBar = ({user}) => {
                         BlackJack Trainer
                         <GiPokerHand/>
                     </div>
-                    <div className="user-nav">{user}</div>
+                    <div className="user-nav">{user.username}</div>
                 </div>
                 <nav className={navbarOpen ? 'navbar-left active' : 'navbar-left'}>
                     <ul className="menu-items" onClick={showNavbar}>

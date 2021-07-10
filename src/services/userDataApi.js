@@ -2,19 +2,19 @@ import Parse from 'parse';
 import {createHmac} from 'crypto';
 
 // Create a new user - CREATE
-export const createNewUser = (username, password) => {
-    const hash = createHmac('sha256', password).digest('hex');
-    const user = new Parse.Object("UserData");
-    user.set("username", username);
-    user.set("password", hash);
-    user.set("points", 0);
-    user.set("rounds_wrong", 0);
-    user.set("rounds_right", 0);
-    try {
-        return user.save();
-    } catch (error) {
-        console.log("Error creating new user", error);
-    }
+export const createUser = (username, password) => {
+    // const hash = createHmac('sha256', password).digest('hex');
+    // const user = new Parse.Object("UserData");
+    // user.set("username", username);
+    // user.set("password", hash);
+    // user.set("points", 0);
+    // user.set("rounds_wrong", 0);
+    // user.set("rounds_right", 0);
+    // try {
+    //     return user.save();
+    // } catch (error) {
+    //     console.log("Error creating new user", error);
+    // }
 }
 
 // Read in User Data - except password

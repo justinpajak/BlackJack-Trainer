@@ -1,9 +1,9 @@
 import {useState} from 'react';
 
 // Import Components
-import Points from "../components/Points";
-import Round from "../components/Round";
-import Settings from '../components/Settings';
+import Points from "./Points";
+import Round from "../Round";
+import Settings from './Settings';
 
 // Import CSS
 import "../styles/Train.css"

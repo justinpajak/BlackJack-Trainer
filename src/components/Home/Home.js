@@ -1,5 +1,5 @@
 import "../styles/Login.css";
-import Login from "../components/Login";
+import Login from "../Login";
 
 const Home = ({handleLogin, handleCreate}) => {
 
