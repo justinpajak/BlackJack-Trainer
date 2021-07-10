@@ -1,4 +1,5 @@
 import Parse from 'parse';
+import { GiConsoleController } from 'react-icons/gi';
 
 // Read in User Data - except password
 export const getDataByUserName = async (username) => {
@@ -16,3 +17,9 @@ export const getDataByUserName = async (username) => {
         console.log("Error getting user data", error);
     }
 }
+
+export const logOutUser = async () => {
+    Parse.User.logOut().then(() => {
+        return null;
+    })
+};
