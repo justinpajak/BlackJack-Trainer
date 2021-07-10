@@ -15,8 +15,10 @@ import Train from "./components/Train/Train";
 // Import Environment and Parse
 import * as Env from "./environment"
 import Parse from 'parse'
+import {getDataByUserName} from "./services/userDataApi";
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
+
 
 // Main Component
 const App = () => {
@@ -30,7 +32,7 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const getUserData = () => {
-    // do nothing
+    // Get user data using getDataByUserName() and populate user state
   }
 
   useEffect(() => {
@@ -54,17 +56,16 @@ const App = () => {
         <Switch>
           {!loggedIn
           ? <Route path="/auth" component={() => <Auth setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
-          : <Route exact path="/" component={() => <Home setUser={setUser} setLoggedIn={setLoggedIn}/>}/>}
+          : <Route exact path="/home" component={() => <Home setUser={setUser} setLoggedIn={setLoggedIn}/>}/>}
           <Route path="/train" component={() => <Train user={user} loggedIn={loggedIn}/>}/>
-          <Redirect to="/auth"/>
+
+          {/* Integrate stats, rank, and tutorial the same way as Train above here*/}
+
+          {!loggedIn ? <Redirect to="/auth"/> : <Redirect to="/home"/>}
         </Switch>
+
       </Router>
-      {/* <Router>
-        <NavBar user={user}/>
-        <Switch>
-          {!loggedIn ? <Route path="/" exact component={() => <Home handleLogin={loginData => handleLogin(loginData)} handleCreate={loginData => handleCreate(loginData)}/>}/>
-                     : <Route path="/" exact component={() => <HomeLoggedIn logOut={logOut}/>}/>}
-          <Route path="/train" component={() => <Train user={user}/>}/>
+      {/*
           <Route path="/stats" component={() => <Stats user={user} 
                                                        points={points} 
                                                        roundsWrong={roundsWrong}
