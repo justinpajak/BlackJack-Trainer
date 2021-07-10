@@ -9,7 +9,7 @@ import {BiBook, BiTrophy} from "react-icons/bi"
 export const PageInfoData = [
     {
         title: 'Home',
-        path: '/',
+        path: '/home',
         icon: <AiOutlineHome/>,
     },
     {
