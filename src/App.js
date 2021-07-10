@@ -49,7 +49,7 @@ const App = () => {
       setLoggedIn(true);
     }
     window.scrollTo(-50, 0);
-  }, []);
+  }, [loggedIn]);
 
   
   return (

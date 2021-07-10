@@ -14,7 +14,6 @@ export const createUser = async (newUser) => {
         await user.signUp();
         userData.set("UserCreds", user);
         try {
-            alert("Account successfully created");
             return await userData.save();
         } catch(error) {
             alert("Error: account was not created");
@@ -28,7 +27,6 @@ export const createUser = async (newUser) => {
 export const loginUser = async (userInfo) => {
     try {   
         await Parse.User.logIn(userInfo.username, userInfo.password);
-        alert("Login Success");
         return true;
     } catch (error) {
         alert("Incorrect username or password");
