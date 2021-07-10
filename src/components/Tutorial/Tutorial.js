@@ -1,7 +1,14 @@
-const Tutorial = () => {
+import {Redirect} from 'react-router-dom';
+
+const Tutorial = ({loggedIn}) => {
     return (
-        <div className="tutorial">
-            <h1>Tutorial</h1>
+        <div>
+            {loggedIn
+            ? <div className="tutorial">
+                <h1>Tutorial</h1>
+              </div>
+            : <Redirect to="/auth"/>
+            }
         </div>
     );
 }

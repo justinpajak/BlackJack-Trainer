@@ -9,10 +9,12 @@ export const getDataByUserName = async (username) => {
     try {
         const results = await query.find();
         const data = new Object();
-        data.points = results[0].get('points');
-        data.rounds_right = results[0].get('rounds_right');
-        data.rounds_wrong = results[0].get('rounds_wrong');
-        return data;
+        if (results[0] !== undefined) {
+            data.points = results[0].get('points');
+            data.rounds_right = results[0].get('rounds_right');
+            data.rounds_wrong = results[0].get('rounds_wrong');
+            return data;
+        }
     } catch (error) {
         console.log("Error getting user data", error);
     }

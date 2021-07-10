@@ -36,22 +36,21 @@ const App = () => {
 
   const getUserData = async (username) => {
     const data = await getDataByUserName(username);
-    setUser({...user, points: data.points, rounds_wrong: data.rounds_wrong, rounds_right: data.rounds_right});
+    if (data !== undefined) {
+      setUser({...user, points: data.points, rounds_wrong: data.rounds_wrong, rounds_right: data.rounds_right});
+    }
   }
 
   useEffect(() => {
     const currentUser = Parse.User.current();
     if (currentUser) {
       setUser({...user, username: currentUser.get("username")})
-      getUserData(currentUser.get("username"));
+      getUserData(user.username);
       setLoggedIn(true);
     }
     window.scrollTo(-50, 0);
   }, []);
 
-  useEffect(() => {
-    console.log(loggedIn);
-  },[loggedIn])
   
   return (
     <div>
@@ -59,12 +58,16 @@ const App = () => {
         <NavBar user={user}/>
         <Switch>
           {!loggedIn
-          ? <Route path="/auth" component={() => <Auth setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
+          ? <Route path="/auth" component={() => <Auth getUserData={getUserData} setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
           : <Route exact path="/home" component={() => <Home setUser={setUser} setLoggedIn={setLoggedIn}/>}/>}
           <Route path="/train" component={() => <Train user={user} loggedIn={loggedIn}/>}/>
-          <Route path="/stats" component={() => <Stats user={user} points={user.points} roundsWrong={user.rounds_wrong} roundsRight={user.rounds_right}/>}/>
-          <Route path="/rank" component={() => <Rank/>}/>
-          <Route path="/tutorial" component={() => <Tutorial/>}/>
+          <Route path="/stats" component={() => <Stats user={user} 
+                                                       points={user.points} 
+                                                       roundsWrong={user.rounds_wrong} 
+                                                       roundsRight={user.rounds_right}
+                                                       loggedIn={loggedIn}/>}/>
+          <Route path="/rank" component={() => <Rank loggedIn={loggedIn}/>}/>
+          <Route path="/tutorial" component={() => <Tutorial loggedIn={loggedIn}/>}/>
           {!loggedIn ? <Redirect to="/auth"/> : <Redirect to="/home"/>}
         </Switch>
       </Router>
