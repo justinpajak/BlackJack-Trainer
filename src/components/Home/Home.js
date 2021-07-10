@@ -1,13 +1,13 @@
-import "../styles/Login.css";
-import Login from "../Login";
+import React from 'react'
 
-const Home = ({handleLogin, handleCreate}) => {
-
+const Home = () => {
     return (
-        <div className="home">
-           
+        <div className="logged-in">
+            <h1>Logged In</h1>
+            <br/>
+            <button>Log Out</button>
         </div>
-    );
+    )
 }
 
-export default Home;
+export default Home

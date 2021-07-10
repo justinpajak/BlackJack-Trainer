@@ -1,14 +1,13 @@
 import {useState} from 'react';
+import {Redirect} from 'react-router-dom';
 
 // Import Components
 import Points from "./Points";
-import Round from "../Round";
-import Settings from './Settings';
 
 // Import CSS
-import "../styles/Train.css"
+import "../../styles/Train.css"
 
-const Train = ({user}) => {
+const Train = ({user, loggedIn}) => {
 
     const [running, setRunning] = useState(false);
 
@@ -16,11 +15,13 @@ const Train = ({user}) => {
         setRunning(!running)
     };
 
+
+
     return (
         <div>
-            <div className="new_bg"></div>
-            <Points user={user}/>
-            {/* {running ? <Round running={running} setRunning={setRunning}/> : <Settings onEvent={onStart}/>} */}
+            {loggedIn ? <h1>traiining</h1> : <Redirect to="/auth"/>}
+            {/* <div className="new_bg"></div>
+            <Points user={user.points}/> */}
         </div>
     );
 }

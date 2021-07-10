@@ -9,9 +9,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-do
 // Import Components
 import NavBar from "./components/NavBar.js";
 import Auth from "./components/Auth/Auth";
-
-// Import Services
-import {getDataByUserName} from "./services/userDataApi";
+import Home from "./components/Home/Home";
+import Train from "./components/Train/Train";
 
 // Import Environment and Parse
 import * as Env from "./environment"
@@ -30,29 +29,33 @@ const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const getUserData = async () => {
-    const data = await getDataByUserName(user.username);
-    // setUser({...user, points: data.points,
-    //                   rounds_wrong: data.rounds_wrong,
-    //                   rounds_right: data.rounds_right});
+  const getUserData = () => {
+    // do nothing
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     const currentUser = Parse.User.current();
     if (currentUser) {
       setUser({...user, username: currentUser.get("username")})
       getUserData();
+      setLoggedIn(true);
     }
     window.scrollTo(-50, 0);
   }, []);
+
+  useEffect(() => {
+    console.log(loggedIn);
+  }, [loggedIn])
 
   return (
     <div>
       <Router>
         <NavBar user={user}/>
         <Switch>
-          <Route path="/auth" component={() => <Auth setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/>
-          {/* <Route path="/home" component={}/> */}
+          {!loggedIn 
+          ? <Route path="/auth" component={() => <Auth setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
+          : <Route path="/home" component={Home}/>}
+          <Route path="/train" component={() => <Train user={user} loggedIn={loggedIn}/>}/>
           <Redirect to="/auth"/>
         </Switch>
       </Router>
