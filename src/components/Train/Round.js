@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import Button from '../Button.js'
 import {cards} from "../../Data/ImageDump"; 
 import "../../styles/Round.css";
+import { BiPause } from 'react-icons/bi';
 
 const Round = ({running, setRunning}) => {
 
@@ -36,51 +37,88 @@ const Round = ({running, setRunning}) => {
                   24, 25, 34, 35, 36, 37, 38, 47,
                   48, 49, 50, 51];
 
+    const [user_count, setUserCount] = useState(0);
+
+    const onChangeCount = (e) => {
+        e.preventDefault();
+        try {
+             // something is wrong here: 
+             //     e.nativeEvent.data only takes the last digit 
+             //     if input is more than one digit long
+            const data = e.nativeEvent.data;
+            setUserCount(data);
+        }
+        catch(error) {
+            console.log("No answer yet");
+        }
+    };
+
     const goBack = () => {
         setRunning(!running);
+    };
+
+    const submit = async (answer) => {
+        answer.preventDefault(); 
+        console.log("user_count: ", user_count); 
+        console.log("types: ", typeof(Number(user_count.data)), " ", typeof(count)); 
+        console.log("count: ", count);
+        // never equal to each other...? not sure why since the 
+        // typeof above says they're both numbers
+        if (await Number(user_count.data) == count) {
+            console.log("points should increase");
+        }
     };
 
     const randIdx = () => {
         return (Math.floor(Math.random() * cards.length));
     }
 
-    const updateCount = (idx) => {
+    const updateCount = async (idx) => {
         console.log("updateCount called with idx = ", idx);
         if (mOne.includes(idx)) {
-            console.log(count);
-            setCount(count - 1);
+            console.log("count-1", count - 1);
+            let newCount = count-1; 
+            setCount(newCount);
         } 
         if (pOne.includes(idx)) {
-            console.log(count);
-            setCount(count + 1);
+            console.log("count+1", count + 1);
+            let newCount = count+1; 
+            setCount(newCount);
         }
-        console.log("updated count ", count); 
+        return count; 
     }
 
+    // added a bunch of async / await statements because trying to get it to update count correctly
+    // right now, all of the updateCounts are having the same value for count
+    // so it is never actually incrementing or decrementing correctly
     const play_round = async () => {
-        setTimeout(() => {
+        await setTimeout(async () => {
             setShowDealerL(true);
             const idx = randIdx();
             setDLIdx(idx);
-            updateCount(17);
+            await updateCount(9); 
+            // await updateCount(9).then(count => console.log("count ", count)); 
         }, 1000);
-        setTimeout(() => {
+        await setTimeout(async () => {
             setShowDealerR(true);
             const idx = randIdx();
             setDRIdx(idx);
-            updateCount(0);
+            await updateCount(0); 
+            // await updateCount(0).then(count => console.log("count ", count));
         }, 2000);
-        setTimeout(() => {
+        await setTimeout(async () => {
             setShowUserL(true);
             const idx = randIdx();
             setULIdx(idx);
-            updateCount(30);
+            await updateCount(30); 
+            // await updateCount(30).then(count => console.log("count ", count));
         }, 3000);
-        setTimeout(() => {
+        await setTimeout(async () => {
             setShowUserR(true);
             const idx = randIdx();
             setURIdx(idx);
-            updateCount(15);
+            await updateCount(15);
+            // await updateCount(15).then(count => console.log("count ", count));
         }, 4000);
     }
 
@@ -99,6 +137,10 @@ const Round = ({running, setRunning}) => {
                 {showUserR ? <img src={cards[URIdx]} className="cards"/> : ''}
             </div>
             <h1>{count}</h1>
+            <form onSubmit={submit}>
+                <input type="text" placeholder="Input count here" onChange={onChangeCount} required autoFocus/>
+                <input type="submit" value="Submit"/>
+            </form>
             <Button onEvent={goBack} cl="start-button" text="Go Back"/>
         </div>
     )
