@@ -4,9 +4,6 @@ import "../../styles/Round.css";
 
 const Round = ({running, setRunning, rounds, speed}) => {
 
-    // State for number of cards rounds in each round
-    const [cardsShown, setCardsShown] = useState(0);
-
     // State for count
     const [count, setCount] = useState(0);
 
@@ -87,20 +84,22 @@ const Round = ({running, setRunning, rounds, speed}) => {
     }
 
     useEffect(async () => {
-        var i = 0;
-        setRoundDone(false);
-        while (i < rounds) {
-            await play_round();
-            setShowDealerL(false);
-            setShowDealerR(false);
-            setShowUserL(false);
-            setShowUserR(false);
-            await sleep(1000);
-            i += 1;
+        if (running === true) {
+            var i = 0;
+            setRoundDone(false);
+            while (i < rounds) {
+                await play_round();
+                setShowDealerL(false);
+                setShowDealerR(false);
+                setShowUserL(false);
+                setShowUserR(false);
+                await sleep(1000);
+                i += 1;
+            }
+            setRunning(true);
+            setRoundDone(true);
         }
-        setRunning(true);
-        setRoundDone(true);
-    }, [cardsShown])
+    }, [running])
 
     const onSubmitCount = (e) => {
         e.preventDefault();
@@ -110,7 +109,9 @@ const Round = ({running, setRunning, rounds, speed}) => {
             console.log("Incorrect");
         }
         setUserCount(0);
+        setCount(0);
         setRunning(false);
+        setRoundDone(false);
     }
 
     const onChangeCount = (e) => {
