@@ -7,11 +7,11 @@ const Round = ({running, setRunning, rounds, speed}) => {
     // State for number of cards rounds in each round
     const [cardsShown, setCardsShown] = useState(0);
 
-    // Set state for number of rounds played so far and other states required
-    const [round, setRound] = useState(0);
-
     // State for count
     const [count, setCount] = useState(0);
+
+    // Round done
+    const [roundDone, setRoundDone] = useState(false);
 
     // State for showing certain cards
     const [showDealerL, setShowDealerL] = useState(false);
@@ -35,10 +35,6 @@ const Round = ({running, setRunning, rounds, speed}) => {
                   24, 25, 34, 35, 36, 37, 38, 47,
                   48, 49, 50, 51];
 
-    const goBack = () => {
-        setRunning(!running);
-    };
-
     const randIdx = () => {
         return (Math.floor(Math.random() * cards.length));
     }
@@ -57,38 +53,39 @@ const Round = ({running, setRunning, rounds, speed}) => {
 
     const play_round = async () => {
         // dealer L
-        await sleep(1000)
+        await sleep(speed)
         var idx = randIdx();
         setDLIdx(idx);
         setShowDealerL(true);
         await updateCount(idx);
 
         // dealer R
-        await sleep(1000)
+        await sleep(speed)
         idx = randIdx();
         setDRIdx(idx);
         setShowDealerR(true);
         await updateCount(idx);
 
         // player L
-        await sleep(1000)
+        await sleep(speed)
         idx = randIdx();
         setULIdx(idx);
         setShowUserL(true);
         await updateCount(idx);
 
         // player R
-        await sleep(1000)
+        await sleep(speed)
         idx = randIdx();
         setURIdx(idx);
         setShowUserR(true);
         await updateCount(idx);
 
-        await sleep(1000);
+        await sleep(600);
     }
 
     useEffect(async () => {
         var i = 0;
+        setRoundDone(false);
         while (i < rounds) {
             await play_round();
             setShowDealerL(false);
@@ -98,7 +95,8 @@ const Round = ({running, setRunning, rounds, speed}) => {
             await sleep(1000);
             i += 1;
         }
-        setRunning(false);
+        setRunning(true);
+        setRoundDone(true);
     }, [cardsShown])
 
     return (
@@ -111,9 +109,12 @@ const Round = ({running, setRunning, rounds, speed}) => {
                         {showUserL ? <img src={cards[ULIdx]}  className="cards"/> : ''}
                         {showUserR ? <img src={cards[URIdx]}  className="cards"/> : ''}
                     </div>
-                    <form>
-
-                    </form>
+                    {roundDone ?
+                    <form className="count-input">
+                        <input className="count" type="text" placeholder="Count: " required/>
+                        <input className="submit" type="submit" value="Submit"/>
+                    </form> : 
+                    ''}
                 </div> : ''}
         </div>
     )

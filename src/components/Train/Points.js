@@ -1,9 +1,9 @@
 import {FaGem} from 'react-icons/fa';
 
-const Points = () => {
+const Points = ({points}) => {
     return (
         <div className="points">
-            <span>Points: 90</span>
+            <span>Points: {points}</span>
             <FaGem/>
         </div>
     )

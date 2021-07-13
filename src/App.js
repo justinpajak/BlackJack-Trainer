@@ -60,7 +60,7 @@ const App = () => {
           {!loggedIn
           ? <Route path="/auth" component={() => <Auth getUserData={getUserData} setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
           : <Route exact path="/home" component={() => <Home setUser={setUser} setLoggedIn={setLoggedIn}/>}/>}
-          <Route path="/train" component={() => <Train user={user} loggedIn={loggedIn}/>}/>
+          <Route path="/train" component={() => <Train loggedIn={loggedIn} points={user.points}/>}/>
           <Route path="/stats" component={() => <Stats user={user} 
                                                        points={user.points} 
                                                        roundsWrong={user.rounds_wrong} 
