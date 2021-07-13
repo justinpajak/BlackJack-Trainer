@@ -10,6 +10,9 @@ const Round = ({running, setRunning, rounds, speed}) => {
     // State for count
     const [count, setCount] = useState(0);
 
+    // State for user input 
+    const [userCount, setUserCount] = useState(0);
+
     // Round done
     const [roundDone, setRoundDone] = useState(false);
 
@@ -99,6 +102,21 @@ const Round = ({running, setRunning, rounds, speed}) => {
         setRoundDone(true);
     }, [cardsShown])
 
+    const onSubmitCount = (e) => {
+        e.preventDefault();
+        if (Number(count) === Number(userCount)) {
+            console.log("Correct");
+        } else {
+            console.log("Incorrect");
+        }
+        setUserCount(0);
+    }
+
+    const onChangeCount = (e) => {
+        e.preventDefault();
+        setUserCount(e.target.value);
+    }
+
     return (
         <div>
             {running ? 
@@ -110,8 +128,8 @@ const Round = ({running, setRunning, rounds, speed}) => {
                         {showUserR ? <img src={cards[URIdx]}  className="cards"/> : ''}
                     </div>
                     {roundDone ?
-                    <form className="count-input">
-                        <input className="count" type="text" placeholder="Count: " required/>
+                    <form onSubmit={onSubmitCount} className="count-input">
+                        <input className="count" onChange={onChangeCount} type="text" placeholder="Count: " required/>
                         <input className="submit" type="submit" value="Submit"/>
                     </form> : 
                     ''}
