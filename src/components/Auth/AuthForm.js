@@ -33,10 +33,10 @@ const AuthForm = ({user, onChange, onLogin, onRegister }) => {
                                 required
                             />
                         </div>
-                        <button className="submit" onClick={onLogin}>
+                        <button className="submit-login" onClick={onLogin}>
                             Login
                         </button>
-                        <button className="submit" onClick={onRegister}>
+                        <button className="submit-login" onClick={onRegister}>
                             Create Acccount
                         </button>
                     </form>
