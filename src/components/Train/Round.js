@@ -53,28 +53,28 @@ const Round = ({running, setRunning, rounds, speed}) => {
 
     const play_round = async () => {
         // dealer L
-        await sleep(speed)
+        await sleep(speed);
         var idx = randIdx();
         setDLIdx(idx);
         setShowDealerL(true);
         await updateCount(idx);
 
         // dealer R
-        await sleep(speed)
+        await sleep(speed);
         idx = randIdx();
         setDRIdx(idx);
         setShowDealerR(true);
         await updateCount(idx);
 
         // player L
-        await sleep(speed)
+        await sleep(speed);
         idx = randIdx();
         setULIdx(idx);
         setShowUserL(true);
         await updateCount(idx);
 
         // player R
-        await sleep(speed)
+        await sleep(speed);
         idx = randIdx();
         setURIdx(idx);
         setShowUserR(true);
@@ -140,4 +140,4 @@ const Round = ({running, setRunning, rounds, speed}) => {
     )
 }
 
-export default Round
+export default Round;

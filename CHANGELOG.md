@@ -18,3 +18,4 @@
 ---
 - Added authentication component
 - Finished (protected) routing
+- Got count to work correctly on Train page
