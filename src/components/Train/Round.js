@@ -1,15 +1,17 @@
 import {useState, useEffect} from 'react';
-import Button from './Button.js'
-import {cards} from "../Data/ImageDump.js"
-import "../styles/Round.css";
+import {cards} from '../../Data/ImageDump.js';
+import "../../styles/Round.css";
 
-const Round = ({running, setRunning}) => {
+const Round = ({running, setRunning, rounds, speed}) => {
 
     // State for number of cards rounds in each round
     const [cardsShown, setCardsShown] = useState(0);
 
     // Set state for number of rounds played so far and other states required
-    //const [round, setRound] = useState(0);
+    const [round, setRound] = useState(0);
+
+    // State for count
+    const [count, setCount] = useState(0);
 
     // State for showing certain cards
     const [showDealerL, setShowDealerL] = useState(false);
@@ -22,9 +24,6 @@ const Round = ({running, setRunning}) => {
     const [DRIdx, setDRIdx] = useState(0);
     const [ULIdx, setULIdx] = useState(0);
     const [URIdx, setURIdx] = useState(0);
-
-    // State for count
-    const [count, setCount] = useState(0);
 
     // Mapping for index to card value
     const pOne =  [0, 1, 2, 3, 4, 5, 13,
@@ -45,61 +44,77 @@ const Round = ({running, setRunning}) => {
     }
 
     const updateCount = (idx) => {
-        if (idx in pOne) {
-            setCount(count + 1);
-        }
-        else if (idx in mOne) {
-            setCount(count - 1);
+        if (pOne.includes(idx)) {
+            setCount(count => count + 1);
+        } else if (mOne.includes(idx)) {
+            setCount(count => count - 1);
         }
     }
 
-    const play_round = () => {
-        setTimeout(() => {
-            setShowDealerL(true);
-            const idx = randIdx();
-            setDLIdx(idx);
-            updateCount(idx);
-            console.log(idx);
-        }, 1000);
-        setTimeout(() => {
-            setShowDealerR(true);
-            const idx = randIdx();
-            setDRIdx(idx);
-            updateCount(idx);
-            console.log(idx);
-        }, 2000);
-        setTimeout(() => {
-            setShowUserL(true);
-            const idx = randIdx();
-            setULIdx(idx);
-            updateCount(idx);
-            console.log(idx);
-        }, 3000);
-        setTimeout(() => {
-            setShowUserR(true);
-            const idx = randIdx();
-            setURIdx(idx);
-            updateCount(idx);
-            console.log(idx);
-        }, 4000);
+    const sleep = (ms) => {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    };
+
+    const play_round = async () => {
+        // dealer L
+        await sleep(1000)
+        var idx = randIdx();
+        setDLIdx(idx);
+        setShowDealerL(true);
+        await updateCount(idx);
+
+        // dealer R
+        await sleep(1000)
+        idx = randIdx();
+        setDRIdx(idx);
+        setShowDealerR(true);
+        await updateCount(idx);
+
+        // player L
+        await sleep(1000)
+        idx = randIdx();
+        setULIdx(idx);
+        setShowUserL(true);
+        await updateCount(idx);
+
+        // player R
+        await sleep(1000)
+        idx = randIdx();
+        setURIdx(idx);
+        setShowUserR(true);
+        await updateCount(idx);
+
+        await sleep(1000);
     }
 
-    useEffect(() => {
-        play_round();
+    useEffect(async () => {
+        var i = 0;
+        while (i < rounds) {
+            await play_round();
+            setShowDealerL(false);
+            setShowDealerR(false);
+            setShowUserL(false);
+            setShowUserR(false);
+            await sleep(1000);
+            i += 1;
+        }
+        setRunning(false);
     }, [cardsShown])
 
     return (
-        <div className="rounds">
-            <div className="dealer">
-                {showDealerL ? <img src={cards[DLIdx]} className="cards"/> : ''}
-                {showDealerR ? <img src={cards[DRIdx]} className="cards"/> : ''}
-            </div>
-            <div className="player">
-                {showUserL ? <img src={cards[ULIdx]} className="cards"/> : ''}
-                {showUserR ? <img src={cards[URIdx]} className="cards"/> : ''}
-            </div>
-            <h1>{count}</h1>
-            <Button onEvent={goBack} cl="start-button" text="Go Back"/>
+        <div>
+            {running ? 
+                <div className="rounds">
+                    <div className="dealer">
+                        {showDealerL ? <img src={cards[DLIdx]}  className="cards"/> : ''}
+                        {showDealerR ? <img src={cards[DRIdx]}  className="cards"/> : ''}
+                        {showUserL ? <img src={cards[ULIdx]}  className="cards"/> : ''}
+                        {showUserR ? <img src={cards[URIdx]}  className="cards"/> : ''}
+                    </div>
+                    <form>
+
+                    </form>
+                </div> : ''}
         </div>
     )
 }

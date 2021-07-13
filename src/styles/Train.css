@@ -10,6 +10,10 @@
   font-family: inherit;
 }
 
+.start-button:active {
+  transform: scale(1.05);
+}
+
 .points {
   display: flex;
   padding: 10px 10px 10px 10px;
