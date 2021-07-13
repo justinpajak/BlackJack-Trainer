@@ -1,0 +1,23 @@
+.stats {
+    margin: 0 auto;
+    display: block; 
+    text-align: center;
+}
+
+.stats h1 {
+    padding: 2rem 0;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 2rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+    background-color: rgba(255, 255, 255, 0.75);
+}
