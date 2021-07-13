@@ -24,7 +24,7 @@ const Train = ({points, loggedIn}) => {
                 <div className="new_bg"></div>
                 <Points points={points}/>
                 {running ? '' : <Settings onStart={onStart}/>}
-                <Round running={running} setRunning={setRunning} rounds={5} speed={1000}/>
+                <Round running={running} setRunning={setRunning} rounds={2} speed={1000}/>
               </div>
             : <Redirect to="/auth"/>}
         </div>

@@ -110,6 +110,7 @@ const Round = ({running, setRunning, rounds, speed}) => {
             console.log("Incorrect");
         }
         setUserCount(0);
+        setRunning(false);
     }
 
     const onChangeCount = (e) => {
