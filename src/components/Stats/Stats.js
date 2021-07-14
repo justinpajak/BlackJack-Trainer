@@ -11,10 +11,10 @@ const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
             {loggedIn
             ? <div className="stats">
                 <h1>Stats</h1>
-                {/* <h3>Points: {points}</h3>
+                <h3>Points: {points}</h3>
                 <h3>Rounds Correct: {roundsRight}</h3>
-                <h3>Rounds Wrong: {roundsWrong}</h3> */}
-                <div className="row headers">
+                <h3>Rounds Wrong: {roundsWrong}</h3>
+                {/* <div className="row headers">
                     <div className="column">
                         <h3>Points</h3>
                     </div>
@@ -42,7 +42,7 @@ const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
                         <h3>{totalRounds}</h3>
                     </div>
                 </div>
-              </div>
+              </div> */}
             : <Redirect to="/auth"/>
             }
         </div>
