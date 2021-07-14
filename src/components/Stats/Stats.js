@@ -41,8 +41,8 @@ const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
                     <div className="column">
                         <h3>{totalRounds}</h3>
                     </div>
-                </div>
-              </div> */}
+                </div> */}
+              </div>
             : <Redirect to="/auth"/>
             }
         </div>
