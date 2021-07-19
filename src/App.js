@@ -37,7 +37,7 @@ const App = () => {
   const getUserData = async (username) => {
     const data = await getDataByUserName(username);
     if (data !== undefined) {
-      setUser({...user, points: data.points, rounds_wrong: data.rounds_wrong, rounds_right: data.rounds_right});
+      setUser({username: username, points: data.points, rounds_wrong: data.rounds_wrong, rounds_right: data.rounds_right});
     }
   }
 
@@ -49,8 +49,7 @@ const App = () => {
       setLoggedIn(true);
     }
     window.scrollTo(-50, 0);
-  }, [loggedIn]);
-
+  }, []);
   
   return (
     <div>

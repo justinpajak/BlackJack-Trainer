@@ -1,5 +1,4 @@
 import React from 'react'
-import {Redirect} from "react-router-dom";
 import {logOutUser} from "../../services/userDataApi";
 
 const Home = ({setUser, setLoggedIn}) => {
@@ -7,7 +6,6 @@ const Home = ({setUser, setLoggedIn}) => {
     const logOut = () => {
         logOutUser();
         setUser({username: "", points: 0, rounds_wrong: 0, rounds_right: 0});
-        <Redirect to="/auth"/>
         setLoggedIn(false);
     }
 

@@ -1,5 +1,4 @@
 import Parse from 'parse';
-import { GiConsoleController } from 'react-icons/gi';
 
 // Read in User Data - except password
 export const getDataByUserName = async (username) => {

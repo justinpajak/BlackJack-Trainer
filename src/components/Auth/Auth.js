@@ -22,8 +22,8 @@ const Auth = ({user, setUser, setLoggedIn, getUserData}) => {
         if (await loginUser(newUser)) {
             setUser({...user, username: newUser.username});
             setLoggedIn(true);
+            getUserData(newUser.username);
         };
-        getUserData(newUser.username);
     }
 
     const onRegister = async (e) => {
