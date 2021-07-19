@@ -29,7 +29,12 @@ export const updateUserStats = async (stats, username) => {
 
     try {
         const user = await query.find();
-        user[0].set('points', oldData.points + 3);
+        user[0].set('points', oldData.points + stats.points);
+        if (stats.right) {
+            user[0].set('rounds_right', oldData.rounds_right + 1);
+        } else {
+            user[0].set('rounds_wrong', oldData.rounds_wrong + 1);
+        }
         return user[0].save();
     } catch (error) {
         console.log("Error getting user data", error);
