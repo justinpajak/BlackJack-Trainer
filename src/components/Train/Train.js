@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Redirect} from 'react-router-dom';
 
 // Import Components
@@ -13,6 +13,22 @@ const Train = ({points, loggedIn, username, getUserData}) => {
 
     const [running, setRunning] = useState(false);
 
+    const [hands, setHands] = useState(localStorage.getItem("hands") || 5);
+
+    const [speed, setSpeed] = useState(localStorage.getItem("speed") || 1);
+
+    const [firstRun, setFirstRun] = useState(true);
+
+    const handsChange = (e) => {
+        setHands(e.target.value);
+        localStorage.setItem("hands", e.target.value);
+    };
+
+    const speedChange = (e) => {
+        setSpeed(e.target.value);
+        localStorage.setItem("speed", e.target.value);
+    };
+
     const onStart = () => {
         setRunning(!running)
     };
@@ -23,8 +39,8 @@ const Train = ({points, loggedIn, username, getUserData}) => {
             ? <div>
                 <div className="new_bg"></div>
                 <Points points={points}/>
-                {running ? '' : <Settings onStart={onStart}/>}
-                <Round getUserData={getUserData} running={running} setRunning={setRunning} hands={1} speed={1000} username={username}/>
+                {running ? '' : <Settings hands={hands} speed={speed} handsChange={handsChange} speedChange={speedChange} onStart={onStart}/>}
+                <Round getUserData={getUserData} running={running} setRunning={setRunning} hands={hands} speed={1000 / speed ** (0.5)} username={username}/>
               </div>
             : <Redirect to="/auth"/>}
         </div>

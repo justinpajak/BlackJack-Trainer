@@ -37,16 +37,18 @@
   background: linear-gradient(#2193b0, #6dd5ed);
   width: 100%;
   height: 100vh;
-  z-index: -1;
+  z-index: -3;
   position: absolute;
 }
 
 p {
-  opacity: 0.7;
+  margin-left: 45px;
+  margin-top: 15px;
 }
 
 .slideContainer {
   width: 75%;
+  z-index: 0;
 }
 
 .slider {
@@ -61,24 +63,6 @@ p {
   border-radius: 12px;
   box-shadow: 0px 1px 10px 1px black;
 }
-
-/* .slider:after {
-  content: '20';
-  color: white;
-  font-size: 1.4rem;
-  position: absolute;
-  left: 82%;
-  bottom: 33%;
-}
-
-.slider:before {
-  content: '1';
-  color: white;
-  font-size: 1.4rem;
-  position: absolute;
-  left: 14%;
-  bottom: 33%;
-} */
 
 .slider:hover {
   opacity: 1;

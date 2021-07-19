@@ -48,8 +48,11 @@ const App = () => {
       getUserData(userName);
       setLoggedIn(true);
     }
-    window.scrollTo(-50, 0);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(-50, 0);
+  },[loggedIn])
   
   return (
     <div>

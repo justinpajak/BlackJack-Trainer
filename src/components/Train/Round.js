@@ -106,10 +106,12 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
         var stats = {}
         if (r) {
             stats.right = true;
+            stats.points = 3;
         } else {
             stats.right = false;
+            stats.points = -1;
         }
-        stats.points = 3;
+
         await updateUserStats(stats, username);
         await getUserData(username);
     }
