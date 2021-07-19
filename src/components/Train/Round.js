@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
 import {cards} from '../../Data/ImageDump.js';
 import "../../styles/Round.css";
+import { updateUserStats } from '../../services/userDataApi.js';
 
-const Round = ({running, setRunning, rounds, speed}) => {
+const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
 
     // State for count
     const [count, setCount] = useState(0);
@@ -87,7 +88,7 @@ const Round = ({running, setRunning, rounds, speed}) => {
         if (running === true) {
             var i = 0;
             setRoundDone(false);
-            while (i < rounds) {
+            while (i < hands) {
                 await play_round();
                 setShowDealerL(false);
                 setShowDealerR(false);
@@ -101,12 +102,24 @@ const Round = ({running, setRunning, rounds, speed}) => {
         }
     }, [running])
 
+    const updateStats = async (r) => {
+        var stats = {}
+        if (r) {
+            stats.right = true;
+            stats.points = 3;
+            await updateUserStats(stats, username);
+            await getUserData(username);
+        }
+    }
+
     const onSubmitCount = (e) => {
         e.preventDefault();
         if (Number(count) === Number(userCount)) {
             console.log("Correct");
+            updateStats(1)
         } else {
             console.log("Incorrect");
+            updateStats(0)
         }
         setUserCount(0);
         setCount(0);

@@ -19,6 +19,23 @@ export const getDataByUserName = async (username) => {
     }
 }
 
+// Updates points, rounds_right, rounds_wrong
+export const updateUserStats = async (stats, username) => {
+    const oldData = await getDataByUserName(username);
+
+    const userdata = Parse.Object.extend("UserData");
+    const query = new Parse.Query(userdata);
+    query.equalTo('username', username);
+
+    try {
+        const user = await query.find();
+        user[0].set('points', oldData.points + 3);
+        return user[0].save();
+    } catch (error) {
+        console.log("Error getting user data", error);
+    }
+}
+
 export const logOutUser = async () => {
     Parse.User.logOut().then(() => {
         return null;

@@ -41,11 +41,11 @@ const App = () => {
     }
   }
 
-  useEffect(() => {
-    const currentUser = Parse.User.current();
+  useEffect(async () => {
+    const currentUser = await Parse.User.current();
     if (currentUser) {
-      setUser({...user, username: currentUser.get("username")})
-      getUserData(user.username);
+      const userName = await currentUser.get("username");
+      getUserData(userName);
       setLoggedIn(true);
     }
     window.scrollTo(-50, 0);
@@ -59,7 +59,7 @@ const App = () => {
           {!loggedIn
           ? <Route path="/auth" component={() => <Auth getUserData={getUserData} setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
           : <Route exact path="/home" component={() => <Home setUser={setUser} setLoggedIn={setLoggedIn}/>}/>}
-          <Route path="/train" component={() => <Train loggedIn={loggedIn} points={user.points}/>}/>
+          <Route path="/train" component={() => <Train loggedIn={loggedIn} points={user.points} username={user.username} getUserData={getUserData}/>}/>
           <Route path="/stats" component={() => <Stats user={user} 
                                                        points={user.points} 
                                                        roundsWrong={user.rounds_wrong} 

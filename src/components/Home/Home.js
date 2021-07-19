@@ -1,4 +1,5 @@
 import React from 'react'
+import {useEffect} from 'react';
 import {logOutUser} from "../../services/userDataApi";
 
 const Home = ({setUser, setLoggedIn}) => {
