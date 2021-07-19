@@ -17,8 +17,6 @@ const Train = ({points, loggedIn, username, getUserData}) => {
 
     const [speed, setSpeed] = useState(localStorage.getItem("speed") || 1);
 
-    const [firstRun, setFirstRun] = useState(true);
-
     const handsChange = (e) => {
         setHands(e.target.value);
         localStorage.setItem("hands", e.target.value);
@@ -40,7 +38,7 @@ const Train = ({points, loggedIn, username, getUserData}) => {
                 <div className="new_bg"></div>
                 <Points points={points}/>
                 {running ? '' : <Settings hands={hands} speed={speed} handsChange={handsChange} speedChange={speedChange} onStart={onStart}/>}
-                <Round getUserData={getUserData} running={running} setRunning={setRunning} hands={hands} speed={1000 / speed ** (0.5)} username={username}/>
+                <Round getUserData={getUserData} running={running} setRunning={setRunning} hands={hands} speed={900 / speed ** (0.5)} username={username}/>
               </div>
             : <Redirect to="/auth"/>}
         </div>

@@ -5,6 +5,9 @@ import { updateUserStats } from '../../services/userDataApi.js';
 
 const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
 
+    // State for correctness
+    const [correct, setCorrect] = useState(false);
+
     // State for count
     const [count, setCount] = useState(0);
 
@@ -121,9 +124,11 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
         if (Number(count) === Number(userCount)) {
             console.log("Correct");
             updateStats(1)
+            setCorrect(true);
         } else {
             console.log("Incorrect");
             updateStats(0)
+            setCorrect(false);
         }
         setUserCount(0);
         setCount(0);
@@ -143,6 +148,8 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
                     <div className="dealer">
                         {showDealerL ? <img src={cards[DLIdx]}  className="cards"/> : ''}
                         {showDealerR ? <img src={cards[DRIdx]}  className="cards"/> : ''}
+                    </div>
+                    <div className="player">
                         {showUserL ? <img src={cards[ULIdx]}  className="cards"/> : ''}
                         {showUserR ? <img src={cards[URIdx]}  className="cards"/> : ''}
                     </div>
@@ -152,7 +159,7 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
                         <input className="submit" type="submit" value="Submit"/>
                     </form> : 
                     ''}
-                </div> : ''}
+                </div> : ""}
         </div>
     )
 }
