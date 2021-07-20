@@ -9,7 +9,13 @@
 .nav_title {
     font-size: 2rem;
     color: white;
-    padding: 0px 0px 0px 40px;
+    padding: 0px 20px 0px 0px;
+}
+
+.nav_title_loggedin {
+    font-size: 2rem;
+    color: white;
+    padding: 0px 0px 0px 80px;
 }
 
 .bars-button {

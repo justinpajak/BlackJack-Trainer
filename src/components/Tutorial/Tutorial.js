@@ -1,4 +1,5 @@
 import {Redirect} from 'react-router-dom';
+import "../../styles/Tutorial.css";
 
 const Tutorial = ({loggedIn}) => {
     return (

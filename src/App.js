@@ -57,7 +57,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <NavBar user={user}/>
+        <NavBar user={user} loggedIn={loggedIn}/>
         <Switch>
           {!loggedIn
           ? <Route path="/auth" component={() => <Auth getUserData={getUserData} setLoggedIn={setLoggedIn} user={user} setUser={setUser}/>}/> 
