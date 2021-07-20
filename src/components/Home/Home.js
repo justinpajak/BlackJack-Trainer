@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { logOutUser } from "../../services/userDataApi";
-import { getNews } from "./News";
+import useFetchNews from "./News";
 
 const Home = ({ setUser, setLoggedIn }) => {
-    const News = async () => {
-        const data = await getNews();
+    const News = () => {
+        const data = useFetchNews();
+
+        if (data === null) {
+            return 'Loading...';
+        }
         setTopNews(data); 
     }
 
@@ -14,7 +18,7 @@ const Home = ({ setUser, setLoggedIn }) => {
         setLoggedIn(false);
     }
 
-    const [topNews, setTopNews] = useState(null); 
+    const [topNews, setTopNews] = useState([]); 
 
     return (
         <div className="logged-in">
@@ -22,7 +26,11 @@ const Home = ({ setUser, setLoggedIn }) => {
             <br />
             <button onClick={logOut}>Log Out</button>
             <button onClick={News}>Get News</button>
-            <p>{topNews}</p>
+            {/* <ul>
+                {topNews.map(el => (
+                    <li key={el.author}>{el.title}</li>
+                ))}
+            </ul> */}
         </div>
     )
 }
