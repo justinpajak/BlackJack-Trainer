@@ -7,6 +7,7 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
 
     // State for correctness
     const [correct, setCorrect] = useState(false);
+    const [shownCor, setShownCor] = useState(true);
 
     // State for count
     const [count, setCount] = useState(0);
@@ -119,7 +120,7 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
         await getUserData(username);
     }
 
-    const onSubmitCount = (e) => {
+    const onSubmitCount = async (e) => {
         e.preventDefault();
         if (Number(count) === Number(userCount)) {
             console.log("Correct");
@@ -132,8 +133,12 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
         }
         setUserCount(0);
         setCount(0);
-        setRunning(false);
         setRoundDone(false);
+
+        setShownCor(false);
+        await sleep(1200);
+        setShownCor(true);
+        setRunning(false);
     }
 
     const onChangeCount = (e) => {
@@ -159,6 +164,7 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
                         <input className="submit" type="submit" value="Submit"/>
                     </form> : 
                     ''}
+                    {shownCor ? '' : correct ? <h1>Correct</h1> : <h1>Incorrect</h1>}
                 </div> : ""}
         </div>
     )
