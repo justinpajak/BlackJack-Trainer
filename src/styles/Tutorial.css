@@ -1,8 +1,35 @@
 .tutorial {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards {
+    display: flex;
     justify-content: center;
 }
 
 .title {
     font-size: 2.4rem;
 }
+
+.button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: inherit;
+  }
+  
+  .button:active {
+    transform: scale(1.05);
+  }
+
+  .info {
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
