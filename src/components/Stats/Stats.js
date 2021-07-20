@@ -1,4 +1,5 @@
 import {Redirect} from 'react-router-dom';
+import LineChart from './PointsPerUserGraph';
 import '../../styles/Stats.css';
 
 const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
@@ -10,11 +11,7 @@ const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
         <div>
             {loggedIn
             ? <div className="stats">
-                <h1>Stats</h1>
-                <h3>Points: {points}</h3>
-                <h3>Rounds Correct: {roundsRight}</h3>
-                <h3>Rounds Wrong: {roundsWrong}</h3>
-                {/* <div className="row headers">
+                <div className="row headers">
                     <div className="column">
                         <h3>Points</h3>
                     </div>
@@ -41,7 +38,8 @@ const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
                     <div className="column">
                         <h3>{totalRounds}</h3>
                     </div>
-                </div> */}
+                </div>
+                <LineChart/>
               </div>
             : <Redirect to="/auth"/>
             }
