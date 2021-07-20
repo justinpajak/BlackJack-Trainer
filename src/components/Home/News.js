@@ -21,13 +21,12 @@ export default function useFetchNews() {
                     return response.json();
                 })
                 .then(function (data) {
-                    console.log(data.articles);
+                    console.log("DATA", data.articles);
                     setData(data);
                 })
         } catch (error) {
             console.log("Error getting news", error);
         }
     }, []);
-
     return data; 
 }

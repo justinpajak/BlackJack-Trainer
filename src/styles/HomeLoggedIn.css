@@ -2,10 +2,19 @@
     margin: 0 auto;
     text-align: center;
     vertical-align: middle;
-    margin-top: 20%;
+    margin-top: 5%;
 }
 
 .logged-in button {
     height: 2rem;
     width: 6rem;
+}
+
+.topNews ul li img{
+    height: 200px;
+    float: left;
+}
+
+.topNews ul li a {
+    color: black;
 }
