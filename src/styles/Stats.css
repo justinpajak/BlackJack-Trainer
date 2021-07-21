@@ -9,7 +9,7 @@
     padding: 2rem 0;
 }
 
-.row {
+.stats .row {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -17,7 +17,7 @@
     line-height: 3;
 }
 
-.column {
+.stats .column {
     display: flex;
     flex-direction: column;
     padding: 0 2rem;

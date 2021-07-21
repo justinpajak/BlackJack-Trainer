@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
+import moment from 'moment';
 
-// CHANGE DATE TO BE PARAMETER
-// useEffect in getNews
-// look at useFetch code example on canvas
 export default function useFetchNews() {
     const [data, setData] = useState([]);
+    let now = new Date();
+    var dateString = moment(now).format('YYYY-MM-DD');
 
     useEffect(() => {
         const url = 'https://newsapi.org/v2/everything?' +
             'q=Blackjack&' +
-            'from=2021-07-20&' +
+            `from=${dateString}&` +
             'sortBy=popularity&' +
             'apiKey=738d80f9c35347b9adb10bda57ec2d63';
 
@@ -21,7 +21,6 @@ export default function useFetchNews() {
                     return response.json();
                 })
                 .then(function (data) {
-                    console.log("DATA", data.articles);
                     setData(data);
                 })
         } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { logOutUser } from "../../services/userDataApi";
-import useFetchNews from "./News";
+import { logOutUser } from "../../services/UserDataApi";
+import useFetchNews from "../../services/NewsApi";
 import '../../styles/HomeLoggedIn.css';
 
 const Home = ({ setUser, setLoggedIn }) => {
@@ -10,7 +10,7 @@ const Home = ({ setUser, setLoggedIn }) => {
         setLoggedIn(false);
     }
 
-    const news = useFetchNews(); 
+    const news = useFetchNews();
 
     return (
         <div>
@@ -20,15 +20,22 @@ const Home = ({ setUser, setLoggedIn }) => {
                 <button onClick={logOut}>Log Out</button>
             </div>
             <div className="topNews">
-                {news.articles ? 
+                <h1>BlackJack News for the day</h1>
+                {news.articles ?
                     <ul>
                         {news.articles.map(el => (
                             <li>
-                                {el.title}
-                                {el.author}
-                                {el.description}
-                                <img src={el.urlToImage}/>
-                                <a href={el.url}>{el.source.name}</a>
+                                <div className="row">
+                                    <div className="image-column">
+                                        <img src={el.urlToImage} alt="image"/>
+                                    </div>
+                                    <div className="text-column">
+                                        <p className="title">{el.title}</p>
+                                        <p className="author"><i>Written by {el.author}</i></p>
+                                        <p className="description">{el.description}</p>
+                                        <p>Read more at <a href={el.url} target="_blank">{el.source.name}</a></p>
+                                    </div>
+                                </div>
                             </li>
                         ))}
                     </ul>
