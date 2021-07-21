@@ -10,8 +10,10 @@ const Home = ({ setUser, setLoggedIn }) => {
         setLoggedIn(false);
     }
 
+    // call custom hook to get news
     const news = useFetchNews();
 
+    // show newsfeed once data is received
     return (
         <div>
             <div className="logged-in">
@@ -20,25 +22,27 @@ const Home = ({ setUser, setLoggedIn }) => {
                 <button onClick={logOut}>Log Out</button>
             </div>
             <div className="topNews">
-                <h1>BlackJack News for the day</h1>
                 {news.articles ?
-                    <ul>
-                        {news.articles.map(el => (
-                            <li>
-                                <div className="row">
-                                    <div className="image-column">
-                                        <img src={el.urlToImage} alt="image"/>
+                    <div>
+                        <h1>BlackJack News for the day</h1>
+                        <ul>
+                            {news.articles.map(el => (
+                                <li>
+                                    <div className="row">
+                                        <div className="image-column">
+                                            <img src={el.urlToImage} alt="image"/>
+                                        </div>
+                                        <div className="text-column">
+                                            <p className="title">{el.title}</p>
+                                            <p className="author"><i>Written by {el.author}</i></p>
+                                            <p className="description">{el.description}</p>
+                                            <p>Read more at <a href={el.url} target="_blank">{el.source.name}</a></p>
+                                        </div>
                                     </div>
-                                    <div className="text-column">
-                                        <p className="title">{el.title}</p>
-                                        <p className="author"><i>Written by {el.author}</i></p>
-                                        <p className="description">{el.description}</p>
-                                        <p>Read more at <a href={el.url} target="_blank">{el.source.name}</a></p>
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                     : ''
                 }
             </div>
