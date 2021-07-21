@@ -23,6 +23,19 @@
     cursor: pointer;
     font-size: 20px;
     font-family: inherit;
+    box-shadow: 0 3px 10px rgb(0,0,0,0.9)
+  }
+
+  .button-r {
+    background: red;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: inherit;
   }
   
   .button:active {
@@ -30,6 +43,56 @@
   }
 
   .info {
-    width: 60%;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .words {
+    font-size: 1.4rem;
+    color: white;
+    margin: 10px 10px 20px 10px;
+  }
+
+  .words-r {
+    font-size: 1.4rem;
+    color: red;
+    margin: 10px 10px 20px 10px;
+  }
+
+  .scroll {
+    width: 300px;
+    width: 400px;
+    margin: 0px auto 10px auto;
+  }
+
+  .start {
+    width: 300px;
+    height: 200px;
+    margin: 20px auto 30px auto;
+  }
+
+  .subp {
+    width: 300px;
+    height: 200px;
+    margin: 20px auto 30px auto;
+  }
+
+  .hand {
+    height: 300px;
+    width: 250px;
+    margin: 20px auto 30px auto;
+  }
+
+  .table {
+    height: 250px;
+    width: 350px;
+    margin: 20px auto 30px auto;
+  }
+
+  .twoone {
+    height: 250px;
+    width: 350px;
+    margin: 20px auto 30px auto;
   }
