@@ -19,3 +19,9 @@
 - Added authentication component
 - Finished (protected) routing
 - Got count to work correctly on Train page
+
+**v0.4.0 - 2021-07-21**
+---
+- Connected to news API
+- Created custom hook: useFetchNews() in NewsApi.js
+- Formatted news on home page
