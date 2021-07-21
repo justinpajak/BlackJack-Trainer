@@ -3,7 +3,7 @@ import {cards} from '../../Data/ImageDump.js';
 import "../../styles/Round.css";
 import { updateUserStats } from '../../services/userDataApi.js';
 
-const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
+const Round = ({running, setRunning, hands, speed, speed_base, username, getUserData}) => {
 
     // State for correctness
     const [correct, setCorrect] = useState(false);
@@ -110,7 +110,7 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
         var stats = {}
         if (r) {
             stats.right = true;
-            stats.points = 3;
+            stats.points = Number(speed_base) * Number(hands);
         } else {
             stats.right = false;
             stats.points = -1;
