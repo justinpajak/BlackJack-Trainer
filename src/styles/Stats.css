@@ -2,18 +2,12 @@
     margin: 0 auto;
     display: block; 
     text-align: center;
-    transform: translate(0%, 40%);
-}
-
-.stats h1 {
-    padding: 2rem 0;
 }
 
 .stats .row {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* padding-bottom: 2rem; */
     line-height: 3;
 }
 
@@ -28,4 +22,16 @@
 
 .headers {
     background-color: rgba(100, 100, 100, 1);
+}
+
+.stats .chart {
+    background-color: white;
+    width: 80% !important;
+    margin: 3rem auto;
+}
+
+.stats .header .title {
+    background-color:white;
+    width: 80%;
+    margin: 0 auto;
 }

@@ -4,13 +4,12 @@ import '../../styles/Stats.css';
 
 const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
     const totalRounds = roundsRight + roundsWrong;
-    const percentRight = totalRounds == 0 ? 0 : roundsRight / totalRounds;
-    const percentWrong = totalRounds == 0 ? 0 : roundsWrong / totalRounds;
-    // I'm going to change this to a table actually
+    const percentRight = totalRounds == 0 ? 0 : Math.round(roundsRight / totalRounds * 10000) / 100;
+    const percentWrong = totalRounds == 0 ? 0 : Math.round(roundsWrong / totalRounds * 10000) / 100;
     return (
         <div>
             {loggedIn
-            ? <div className="stats">
+            ? <div className="stats"> 
                 <div className="row headers">
                     <div className="column">
                         <h3>Points</h3>
@@ -30,16 +29,16 @@ const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
                         <h3>{points}</h3>
                     </div>
                     <div className="column">
-                        <h3>{percentRight}</h3>
+                        <h3>{percentRight}%</h3>
                     </div>
                     <div className="column">
-                        <h3>{percentWrong}</h3>
+                        <h3>{percentWrong}%</h3>
                     </div>
                     <div className="column">
                         <h3>{totalRounds}</h3>
                     </div>
                 </div>
-                <LineChart/>
+                <LineChart points={points}/>
               </div>
             : <Redirect to="/auth"/>
             }

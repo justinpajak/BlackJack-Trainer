@@ -18,7 +18,7 @@ import Tutorial from "./components/Tutorial/Tutorial";
 // Import Environment and Parse
 import * as Env from "./environment"
 import Parse from 'parse'
-import {getDataByUserName} from "./services/userDataApi";
+import {getDataByUserName} from "./services/UserDataApi";
 Parse.initialize(Env.APPLICATION_ID, Env.JAVASCRIPT_KEY);
 Parse.serverURL = Env.SERVER_URL;
 
