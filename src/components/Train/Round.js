@@ -136,9 +136,6 @@ const Round = ({running, setRunning, hands, speed, username, getUserData}) => {
         setRoundDone(false);
 
         setShownCor(false);
-        await sleep(1200);
-        setShownCor(true);
-        setRunning(false);
     }
 
     const onChangeCount = (e) => {
