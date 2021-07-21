@@ -69,10 +69,10 @@ const Tutorial = ({loggedIn}) => {
                                             negative counts you must have a minus sign (ex: -2), but for positive counts
                                             you SHOULD NOT add a '+' (ex: 2)</p>
                         <img src={submit} className="subp"/>
-                        <p className="words">After submitting, you will be told if you aare correct or not, and your points
+                        <p className="words">After submitting, you will be told if you are correct or not, and your points
                                              and other stats will be adjusted.</p>
-                        <p className="words">Note for higher speed and number of rounds played
-                                             before being asked the count, the more points you can earn!</p>
+                        <p className="words">For a higher speed and number of rounds played
+                                             before being asked the count, you can earn more points!</p>
                     </div>
                     }
                 </div>
