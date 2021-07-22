@@ -14,7 +14,7 @@ import { GiPokerHand} from 'react-icons/gi'
 // Import Components
 import { PageInfoData } from '../Data/PageInfoData.js';
 
-const NavBar = ({user}) => {
+const NavBar = ({user, loggedIn}) => {
 
     const [navbarOpen, setNavbarOpen] = useState(false);
 
@@ -29,7 +29,7 @@ const NavBar = ({user}) => {
                     <Link to="#" className="bars-button">
                         <FaIcons.FaBars onClick={showNavbar}/>
                     </Link>
-                    <div className="nav_title">
+                    <div className={loggedIn ? "nav_title_loggedin" : "nav_title"}>
                         BlackJack Trainer
                         <GiPokerHand/>
                     </div>

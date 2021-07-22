@@ -7,16 +7,19 @@
 
 .cards {
     width: 100px;
+    margin: 5px;
 }
 
 .dealer {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .player {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .count-input {

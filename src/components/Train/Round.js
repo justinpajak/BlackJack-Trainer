@@ -1,8 +1,13 @@
 import {useState, useEffect} from 'react';
 import {cards} from '../../Data/ImageDump.js';
 import "../../styles/Round.css";
+import { updateUserStats } from '../../services/userDataApi.js';
 
-const Round = ({running, setRunning, rounds, speed}) => {
+const Round = ({running, setRunning, hands, speed, speed_base, username, getUserData}) => {
+
+    // State for correctness
+    const [correct, setCorrect] = useState(false);
+    const [shownCor, setShownCor] = useState(true);
 
     // State for count
     const [count, setCount] = useState(0);
@@ -87,7 +92,7 @@ const Round = ({running, setRunning, rounds, speed}) => {
         if (running === true) {
             var i = 0;
             setRoundDone(false);
-            while (i < rounds) {
+            while (i < hands) {
                 await play_round();
                 setShowDealerL(false);
                 setShowDealerR(false);
@@ -101,17 +106,36 @@ const Round = ({running, setRunning, rounds, speed}) => {
         }
     }, [running])
 
-    const onSubmitCount = (e) => {
+    const updateStats = async (r) => {
+        var stats = {}
+        if (r) {
+            stats.right = true;
+            stats.points = Number(speed_base) * Number(hands);
+        } else {
+            stats.right = false;
+            stats.points = -1;
+        }
+
+        await updateUserStats(stats, username);
+        await getUserData(username);
+    }
+
+    const onSubmitCount = async (e) => {
         e.preventDefault();
         if (Number(count) === Number(userCount)) {
             console.log("Correct");
+            updateStats(1)
+            setCorrect(true);
         } else {
             console.log("Incorrect");
+            updateStats(0)
+            setCorrect(false);
         }
         setUserCount(0);
         setCount(0);
-        setRunning(false);
         setRoundDone(false);
+
+        setShownCor(false);
     }
 
     const onChangeCount = (e) => {
@@ -126,6 +150,8 @@ const Round = ({running, setRunning, rounds, speed}) => {
                     <div className="dealer">
                         {showDealerL ? <img src={cards[DLIdx]}  className="cards"/> : ''}
                         {showDealerR ? <img src={cards[DRIdx]}  className="cards"/> : ''}
+                    </div>
+                    <div className="player">
                         {showUserL ? <img src={cards[ULIdx]}  className="cards"/> : ''}
                         {showUserR ? <img src={cards[URIdx]}  className="cards"/> : ''}
                     </div>
@@ -135,7 +161,8 @@ const Round = ({running, setRunning, rounds, speed}) => {
                         <input className="submit" type="submit" value="Submit"/>
                     </form> : 
                     ''}
-                </div> : ''}
+                    {shownCor ? '' : correct ? <h1>Correct</h1> : <h1>Incorrect</h1>}
+                </div> : ""}
         </div>
     )
 }
