@@ -1,5 +1,5 @@
 import {Redirect} from 'react-router-dom';
-import LineChart from './PointsPerUserGraph';
+import PieChart from './PointsPerUserGraph';
 import '../../styles/Stats.css';
 
 const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
@@ -38,7 +38,7 @@ const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
                         <h3>{totalRounds}</h3>
                     </div>
                 </div>
-                <LineChart points={points}/>
+                <PieChart rounds_right={roundsRight} rounds_wrong={roundsWrong}/>
               </div>
             : <Redirect to="/auth"/>
             }

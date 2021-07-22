@@ -1,40 +1,42 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
   
-  const LineChart = ({points}) => {
+  const PieChart = ({rounds_right, rounds_wrong}) => {
+    console.log(rounds_right);
+    console.log(rounds_wrong);
     const data = {
       backgroundColor: 'white',
-      labels: ['1', '2', '3', '4', '5', '6'],
+      labels: ['Right', 'Wrong'],
       datasets: [
         {
-          label: 'Points Gained Per Day',
-          data: [12, 19, 3, 5, 2, 3],
-          fill: false,
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgba(255, 99, 132, 0.2)',
+          data: [rounds_right, rounds_wrong],
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(255, 99, 132, 1)',
+          ],
+          borderWidth: 1,
         },
       ],
     };
     
     const options = {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
+      layout: {
+        padding: 10
       },
     };
+
     return (
     <div>
       <div className='chart'>
-        <h1 className='title'>Line Chart</h1>
-        <Line data={data} options={options}/>
+        <h1 className='title'>Rounds Rigth vs Rounds Wrong</h1>
+        <Pie data={data} options={options}/>
       </div>
     </div>
     );
   };
   
-  export default LineChart;
+  export default PieChart;

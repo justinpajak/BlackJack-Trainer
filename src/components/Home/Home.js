@@ -11,7 +11,9 @@ const Home = ({ setUser, setLoggedIn }) => {
     }
 
     // call custom hook to get news
-    const news = useFetchNews();
+    // commented out so News API doesn't exceed 100 requests per day
+    // const news = useFetchNews();
+    const news = [];
 
     // show newsfeed once data is received
     return (
