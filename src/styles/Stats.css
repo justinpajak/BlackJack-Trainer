@@ -4,20 +4,34 @@
     text-align: center;
 }
 
-.stats h1 {
-    padding: 2rem 0;
-}
-
-.row {
+.stats .row {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding-bottom: 2rem;
+    line-height: 3;
 }
 
-.column {
+.stats .column {
     display: flex;
     flex-direction: column;
     padding: 0 2rem;
     background-color: rgba(255, 255, 255, 0.75);
+    width: 33%;
+    line-height: 3;
+}
+
+.headers {
+    background-color: rgba(100, 100, 100, 1);
+}
+
+.stats .chart {
+    background-color: white;
+    width: 30rem !important;
+    margin: 3rem auto;
+}
+
+.stats .header .title {
+    background-color:white;
+    width: 80%;
+    margin: 0 auto;
 }

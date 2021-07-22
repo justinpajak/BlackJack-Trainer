@@ -1,20 +1,16 @@
 import {Redirect} from 'react-router-dom';
+import PieChart from './PointsPerUserGraph';
 import '../../styles/Stats.css';
 
 const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
     const totalRounds = roundsRight + roundsWrong;
-    const percentRight = totalRounds == 0 ? 0 : roundsRight / totalRounds;
-    const percentWrong = totalRounds == 0 ? 0 : roundsWrong / totalRounds;
-    // I'm going to change this to a table actually
+    const percentRight = totalRounds == 0 ? 0 : Math.round(roundsRight / totalRounds * 10000) / 100;
+    const percentWrong = totalRounds == 0 ? 0 : Math.round(roundsWrong / totalRounds * 10000) / 100;
     return (
         <div>
             {loggedIn
-            ? <div className="stats">
-                <h1>Stats</h1>
-                <h3>Points: {points}</h3>
-                <h3>Rounds Correct: {roundsRight}</h3>
-                <h3>Rounds Wrong: {roundsWrong}</h3>
-                {/* <div className="row headers">
+            ? <div className="stats"> 
+                <div className="row headers">
                     <div className="column">
                         <h3>Points</h3>
                     </div>
@@ -33,15 +29,16 @@ const Stats = ({user, points, roundsWrong, roundsRight, loggedIn}) => {
                         <h3>{points}</h3>
                     </div>
                     <div className="column">
-                        <h3>{percentRight}</h3>
+                        <h3>{percentRight}%</h3>
                     </div>
                     <div className="column">
-                        <h3>{percentWrong}</h3>
+                        <h3>{percentWrong}%</h3>
                     </div>
                     <div className="column">
                         <h3>{totalRounds}</h3>
                     </div>
-                </div> */}
+                </div>
+                <PieChart rounds_right={roundsRight} rounds_wrong={roundsWrong}/>
               </div>
             : <Redirect to="/auth"/>
             }

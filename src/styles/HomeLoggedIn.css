@@ -1,0 +1,78 @@
+.logged-in {
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 3rem;
+}
+
+.logged-in button {
+    height: 2rem;
+    width: 6rem;
+}
+
+.topNews ul li a:link {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.topNews ul li a:visited {
+    color: #666633;
+}
+
+.topNews ul li a:hover {
+    color:lightgreen;
+}
+
+.topNews {
+    padding-top: 3rem;
+}
+
+.topNews h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.topNews ul li img{
+    height: auto;
+    width: auto;
+    float: left;
+}
+
+.topNews ul li {
+    width: 95%;
+    margin: 0 auto;
+    display: block;
+}
+
+.topNews ul li .row {
+    display: flex; 
+    flex-direction: row;
+    padding: 1rem;
+    background-color: rgb(71, 168, 100);
+}
+
+.topNews ul li .image-column {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    align-self: center;
+}
+
+.topNews ul li .text-column {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 1rem;
+}
+
+.topNews ul li .title {
+    font-size: 24px;
+    color: white;
+}
+
+.topNews ul li .author {
+    padding: 0.5rem;
+}
+
+.topNews ul li .description {
+    padding-bottom: 0.5rem;
+}
