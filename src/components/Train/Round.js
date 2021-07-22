@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {cards} from '../../Data/ImageDump.js';
 import "../../styles/Round.css";
-import { updateUserStats } from '../../services/userDataApi.js';
+import { updateUserStats } from '../../services/UserDataApi.js';
 
 const Round = ({running, setRunning, hands, speed, speed_base, username, getUserData}) => {
 
