@@ -23,3 +23,4 @@
 - Connected to news API
 - Created custom hook: useFetchNews() in NewsApi.js
 - Formatted news on home page
+- Added pie chart on stats page
