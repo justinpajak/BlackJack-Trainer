@@ -32,7 +32,7 @@ import { Pie } from 'react-chartjs-2';
     return (
     <div>
       <div className='chart'>
-        <h1 className='title'>Rounds Rigth vs Rounds Wrong</h1>
+        <h1 className='title'>Rounds Right vs Rounds Wrong</h1>
         <Pie data={data} options={options}/>
       </div>
     </div>
