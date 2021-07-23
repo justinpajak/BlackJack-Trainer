@@ -19,3 +19,11 @@
 - Added authentication component
 - Finished (protected) routing
 - Got count to work correctly on Train page
+
+
+**v0.4.0 - 2021-07-23**
+---
+- Added Interactive Training page, user can toggle between tutorials
+- Added parse api calls in userDataApi.js to update a users's points, 
+and other stats after completing a round on training page
+- Added scroll bars to let user choose speed and number of hands to play before being asked the count
