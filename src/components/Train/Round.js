@@ -40,6 +40,7 @@ const Round = ({running, setRunning, hands, speed, speed_base, username, getUser
                   24, 25, 34, 35, 36, 37, 38, 47,
                   48, 49, 50, 51];
 
+    // Generates a random card
     const randIdx = () => {
         return (Math.floor(Math.random() * cards.length));
     }
@@ -106,6 +107,7 @@ const Round = ({running, setRunning, hands, speed, speed_base, username, getUser
         }
     }, [running])
 
+    // Makes api call to parse database to update stats
     const updateStats = async (r) => {
         var stats = {}
         if (r) {
@@ -120,6 +122,7 @@ const Round = ({running, setRunning, hands, speed, speed_base, username, getUser
         await getUserData(username);
     }
 
+    // On count submit handler
     const onSubmitCount = async (e) => {
         e.preventDefault();
         if (Number(count) === Number(userCount)) {

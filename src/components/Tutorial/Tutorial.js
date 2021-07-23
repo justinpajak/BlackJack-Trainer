@@ -13,14 +13,17 @@ const Tutorial = ({loggedIn}) => {
     
     const [showCounting, setShowCounting] = useState(true);
 
+    // Ccounting button on click handler
     const clickCountingB = () => {
         setShowCounting(true);
     }
 
+    // Training button on click handler
     const clickTrainingB = () => {
         setShowCounting(false);
     }
 
+    // HTML and text for both slides
     return (
         <div>
             {loggedIn

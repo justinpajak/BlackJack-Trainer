@@ -12,16 +12,18 @@ import "../../styles/Train.css"
 const Train = ({points, loggedIn, username, getUserData}) => {
 
     const [running, setRunning] = useState(false);
-
+    
     const [hands, setHands] = useState(localStorage.getItem("hands") || 5);
 
     const [speed, setSpeed] = useState(localStorage.getItem("speed") || 1);
 
+    // Hands slider change handler
     const handsChange = (e) => {
         setHands(e.target.value);
         localStorage.setItem("hands", e.target.value);
     };
 
+    // Speed slider change handler
     const speedChange = (e) => {
         setSpeed(e.target.value);
         localStorage.setItem("speed", e.target.value);
