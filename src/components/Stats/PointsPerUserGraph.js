@@ -2,8 +2,7 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
   
   const PieChart = ({rounds_right, rounds_wrong}) => {
-    console.log(rounds_right);
-    console.log(rounds_wrong);
+    // set data and color settings
     const data = {
       backgroundColor: 'white',
       labels: ['Right', 'Wrong'],
@@ -23,6 +22,7 @@ import { Pie } from 'react-chartjs-2';
       ],
     };
     
+    // set padding for graph on canvas
     const options = {
       layout: {
         padding: 10
