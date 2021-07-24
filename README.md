@@ -7,9 +7,11 @@
 - Files added include
     - NewsApi.js located in src/services
     - PointsPerUserGraph.js located in src/components/Stats
-- Files modified (to add service use and components)
+- Files modified (to add service use, components, and styling)
     - Home.js
     - Stats.js
+    - HomeLoggedIn.css
+    - Stats.css
 
 ## Link to UML Diagram: 
 https://docs.google.com/presentation/d/1gp1wkKut0SlwIPgOEG1YVYD45QXDqGa8aQ7QhRJ0RYs/edit?usp=sharing
