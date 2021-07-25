@@ -1,5 +1,10 @@
 # BlackJack Card Counting Trainer - Web Application
 
+## Instructions to Download and Run
+1. Download zip file
+2. Open in an IDE (VSCode or Atom, etc.)
+3. Open a terminal and run "npm start"
+
 ## Feature 6 - Ashley Yeung
 - Added newsfeed to Home page using a custom hook in the NewsApi.js service
 - Added pie chart component to Stats page using react-chartjs-2
